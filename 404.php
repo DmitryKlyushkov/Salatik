@@ -6,7 +6,6 @@
  *
  * @package salatik
  */
-// Commit
 
 get_header();
 ?>
