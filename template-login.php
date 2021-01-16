@@ -8,4 +8,23 @@
  * 
  * @package salatik
  */
-?>
+
+if(is_user_logged_in()){
+    wp_redirect(home_url()); exit;		// Если юзер залогинен - перенаправляет его на главную траницу
+}
+get_header(); ?>
+
+<main class="reg log">
+            <div class="reg__bg log__bg">
+                <picture><source srcset="img/reg-login/login.webp" type="image/webp"><img src="img/reg-login/login.png" alt=""></picture>
+            </div>
+            <div class="log__form">
+
+                <?php echo do_shortcode( '[login_form]' ); ?>
+
+            </div>
+        </main>
+        
+        <?php echo do_shortcode( '[lost_password_form]' ); ?>
+
+<?php get_footer(); ?>

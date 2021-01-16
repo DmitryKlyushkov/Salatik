@@ -50,3 +50,12 @@ require SALATIK_THEME_DIR . '/widgets/widget-sidebar-ad.php';
 
 // Widget-Additional
 require SALATIK_THEME_DIR . '/widgets/widget-additional.php';
+
+// Login Form
+require SALATIK_THEME_DIR . '/inc/login.php';
+
+// Lost Password
+require SALATIK_THEME_DIR . '/inc/lost-password.php';
+
+// Registration Form
+require SALATIK_THEME_DIR . '/inc/registration.php';

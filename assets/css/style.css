@@ -222,6 +222,11 @@ input[type="file"]::-webkit-file-upload-button {
   /* chromes and blink button */
   cursor: pointer;
 }
+.error {
+  font-size: 18px;
+  color: red;
+  margin-bottom: 10px;
+}
 
 .header__upper-container {
   position: relative;
