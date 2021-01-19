@@ -14,7 +14,7 @@
             <div class="recipe-popular__panel">
                 <div class="recipe-popular__unit">
                     <i class="icon-likes"></i>
-                    <span>100</span>
+                    <span><?php echo rmp_get_vote_count( get_the_ID() ); ?></span>
                 </div>
                 <div class="recipe-popular__unit">
                     <i class="icon-commets"></i>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="recipe-popular__column">
-            <a href="#">
+            <a href="<?php the_permalink(); ?>">
                 <div class="recipe-popular__img">
                     <?php the_post_thumbnail( 'thumbnail' ); ?>	
                 </div>

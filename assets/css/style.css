@@ -2415,36 +2415,22 @@ a.active > i {
   color: rgba(68, 68, 68, 0.6);
 }
 
-.main-panel__rating {
-  direction: rtl;
+.rmp-rating-widget .rmp-icon--ratings {
+  font-size: 20px;
 }
 
-.main-panel__rating label {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+.rmp-widgets-container.rmp-wp-plugin.rmp-main-container
+  .rmp-rating-widget__icons-list__icon {
+  margin: 0 2px;
 }
 
-.main-panel__rating label:not(:first-of-type) {
-  padding-right: 0.5px;
+.rmp-widgets-container.rmp-wp-plugin.rmp-main-container
+  .rmp-rating-widget__icons {
+  margin: 0;
 }
 
-.main-panel__rating label:before {
-  content: "\2605";
-  font-size: 26px;
-  color: rgba(68, 68, 68, 0.2);
-  line-height: 1;
-}
-
-.main-panel__rating input {
-  display: none;
-}
-
-.main-panel__rating input:checked ~ label:before,
-.main-panel__rating:not(:checked) > label:hover:before,
-.main-panel__rating:not(:checked) > label:hover ~ label:before {
-  color: #f2994a;
+.rmp-rating-widget {
+  display: flex;
 }
 
 .main-panel__save {
@@ -2885,7 +2871,6 @@ a.active > i {
   display: -ms-flexbox;
   display: flex;
   font-size: 0;
-  direction: rtl;
 }
 
 .rating label {
@@ -2895,25 +2880,12 @@ a.active > i {
   cursor: pointer;
 }
 
-.rating label:not(:first-of-type) {
+.rating .rmp-icon--ratings:not(:last-of-type) {
   padding-right: 4px;
 }
 
-.rating label:before {
-  content: "\2605";
-  font-size: 52px;
-  color: rgba(68, 68, 68, 0.2);
-  line-height: 0.9;
-}
-
-.rating input {
-  display: none;
-}
-
-.rating input:checked ~ label:before,
-.rating:not(:checked) > label:hover:before,
-.rating:not(:checked) > label:hover ~ label:before {
-  color: #ed812b;
+.rating .rmp-icon--ratings {
+  font-size: 36px;
 }
 
 .similars {
@@ -3595,7 +3567,7 @@ a.active > i {
   font-size: 0;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .recipe-popular__column:nth-child(1) {
@@ -5402,13 +5374,13 @@ a.active > i {
     font-size: 12px;
   }
 
-  .main-panel__rating label {
-    width: 16px;
-    height: 16px;
+  .rmp-rating-widget .rmp-icon--ratings {
+    font-size: 16px;
   }
 
-  .main-panel__rating label:before {
-    font-size: 18px;
+  .rmp-widgets-container.rmp-wp-plugin.rmp-main-container
+    .rmp-rating-widget__icons-list__icon {
+    margin: 0 1px;
   }
 
   .main-panel__save i {
@@ -5554,17 +5526,12 @@ a.active > i {
     margin-bottom: 30px;
   }
 
-  .rating label {
-    width: 25px;
-    height: 25px;
-  }
-
-  .rating label:not(:first-of-type) {
+  .rating .rmp-icon--ratings:not(:last-of-type) {
     padding-right: 2px;
   }
 
-  .rating label:before {
-    font-size: 27px;
+  .rating .rmp-icon--ratings {
+    font-size: 23px;
   }
 
   .similars--p {

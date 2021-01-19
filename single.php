@@ -47,7 +47,8 @@ $category = wp_get_post_categories( get_the_ID() );
 							<i class="icon-views"></i>
 							<span class="main-panel__viewsnum"><?php echo getPostViews(get_the_ID()); ?></span>
 						</div>
-						<form class="main-panel__rating" data-da="main-panel_bottom, 1, 525" method="POST" action="">
+						<?php echo do_shortcode('[ratemypost]'); ?>	
+						<!-- <form class="main-panel__rating" data-da="main-panel_bottom, 1, 525" method="POST" action="">
 							<input
 							type="radio"
 							id="star5"
@@ -83,7 +84,7 @@ $category = wp_get_post_categories( get_the_ID() );
 							value="1"
 							/>
 							<label for="star1"></label>
-						</form>
+						</form> -->
 						<div class="main-panel__save" data-da="main-panel_bottom, 2, 525">
 							<i class="icon-heart"></i>
 							<a href="#" class="main-panel__savetext">В закладки</a>
@@ -229,36 +230,7 @@ $category = wp_get_post_categories( get_the_ID() );
 							<div class="share__column">
 								<h6 class="share__title share__title--b">Оценить рецепт:</h6>
 								<form class="rating" method="POST" action="">
-									<input
-									type="radio"
-									id="star5"
-									name="rating"
-									value="5"
-									/><label for="star5"></label>
-									<input
-									type="radio"
-									id="star4"
-									name="rating"
-									value="4"
-									/><label for="star4"></label>
-									<input
-									type="radio"
-									id="star3"
-									name="rating"
-									value="3"
-									/><label for="star3"></label>
-									<input
-									type="radio"
-									id="star2"
-									name="rating"
-									value="2"
-									/><label for="star2"></label>
-									<input
-									type="radio"
-									id="star1"
-									name="rating"
-									value="1"
-									/><label for="star1"></label>
+									<?php echo rmp_get_visual_rating( get_the_ID() ); ?>
 								</form>
 							</div>
 						</div>

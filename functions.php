@@ -59,3 +59,6 @@ require SALATIK_THEME_DIR . '/inc/lost-password.php';
 
 // Registration Form
 require SALATIK_THEME_DIR . '/inc/registration.php';
+
+// Rating System Settings
+require SALATIK_THEME_DIR . '/inc/rating-system.php';

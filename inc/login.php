@@ -70,7 +70,7 @@ function salatik_login() {
     if( is_page('login') && !(is_user_logged_in()) && isset($_POST['form-log__login']) && isset($_POST['form-log__password'])) {
         $user_login = esc_sql($_POST['form-log__login']);
         $user_password = esc_sql($_POST['form-log__password']);
-        $remember = $_POST['form-log__checkbox'] ? true : false;
+        $remember = isset($_POST['form-log__checkbox']) ? true : false;
 
         $user_info = array(
             'user_login'    => $user_login,
