@@ -27,6 +27,9 @@ require SALATIK_THEME_DIR . '/inc/enqueue.php';
 // Theme-Support
 require SALATIK_THEME_DIR . '/inc/theme-support.php';
 
+// Menu Settings
+require SALATIK_THEME_DIR . '/inc/menu.php';
+
 // Custom Post Types
 require SALATIK_THEME_DIR . '/inc/custom-post-types.php';
 
@@ -62,3 +65,4 @@ require SALATIK_THEME_DIR . '/inc/registration.php';
 
 // Rating System Settings
 require SALATIK_THEME_DIR . '/inc/rating-system.php';
+

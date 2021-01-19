@@ -16,16 +16,16 @@ function salatik_lost_password_form() {
         <div class="popup__body">
             <div class="popup__content">
                 <a href="" class="popup__close close-popup">x</a>
-                <h3 class="popup__title form-reg__title form-log__title">Забыли пароль?</h3>
+                <h3 class="popup__title form-reg__title form-log__title"><?php esc_html_e('Забыли пароль?', 'salatik'); ?></h3>
                 <?php salatik_lost_password_display_errors(); ?>
                 <form class="popup__form lost-pass" action="" method="POST">
-                    <label for="lost-pass__login" class="popup__subtitle form-reg__subtitle form-log__subtitle">Ваш логин</label>
-                    <input type="text" class="form-reg__input" id="user_login" name="user_login" placeholder="Введите логин" required="">
+                    <label for="lost-pass__login" class="popup__subtitle form-reg__subtitle form-log__subtitle"><?php esc_html_e('Ваш логин', 'salatik'); ?></label>
+                    <input type="text" class="form-reg__input" id="user_login" name="user_login" placeholder="<?php esc_html_e('Введите логин', 'salatik'); ?>" required="">
 
-                    <label for="lost-pass__email" class="popup__subtitle form-reg__subtitle form-log__subtitle">Электронная почта</label>
-                    <input type="email" class="form-reg__input" id="lost-pass__email" name="lost-pass__email" placeholder="Введите электронную почту" required="">
+                    <label for="lost-pass__email" class="popup__subtitle form-reg__subtitle form-log__subtitle"><?php esc_html_e('Электронная почта', 'salatik'); ?></label>
+                    <input type="email" class="form-reg__input" id="lost-pass__email" name="lost-pass__email" placeholder="<?php esc_html_e('Введите вашу электронную почту', 'salatik'); ?>" required="">
                     
-                    <button type="submit" id="lost-pass__btn" class="form-reg__btn">Восстановить пароль</button>
+                    <button type="submit" id="lost-pass__btn" class="form-reg__btn"><?php esc_html_e('Восстановить пароль', 'salatik'); ?></button>
                 </form>
             </div>
         </div>

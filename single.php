@@ -47,7 +47,9 @@ $category = wp_get_post_categories( get_the_ID() );
 							<i class="icon-views"></i>
 							<span class="main-panel__viewsnum"><?php echo getPostViews(get_the_ID()); ?></span>
 						</div>
-						<?php echo do_shortcode('[ratemypost]'); ?>	
+						<div class="main-panel__rating">
+							<?php echo rmp_get_visual_rating( get_the_ID() ); ?>
+						</div>
 						<!-- <form class="main-panel__rating" data-da="main-panel_bottom, 1, 525" method="POST" action="">
 							<input
 							type="radio"
@@ -230,7 +232,7 @@ $category = wp_get_post_categories( get_the_ID() );
 							<div class="share__column">
 								<h6 class="share__title share__title--b">Оценить рецепт:</h6>
 								<form class="rating" method="POST" action="">
-									<?php echo rmp_get_visual_rating( get_the_ID() ); ?>
+									<?php echo do_shortcode('[ratemypost]'); ?>	
 								</form>
 							</div>
 						</div>

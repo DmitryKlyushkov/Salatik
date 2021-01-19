@@ -13,22 +13,22 @@ function salatik_login_fields() {
     ob_start(); ?>
 
     <form id="log-form" class="form-reg form-log" action="" method="POST">
-        <h3 class="form-reg__title form-log__title">Вход</h3>
+        <h3 class="form-reg__title form-log__title"><?php esc_html_e('Вход', 'salatik'); ?></h3>
         <?php
             salatik_login_display_errors();
         ?>
-        <div class="form-reg__subtitle form-log__subtitle">Логин</div>
-        <input type="text" class="form-reg__input" id="form-log__login" name="form-log__login" placeholder="Введите ваш логин" required autocomplete="off">
-        <div class="form-reg__subtitle form-log__subtitle">Пароль</div>
-        <input type="password" class="form-reg__input" id="form-log__password" name="form-log__password" placeholder="Введите пароль" required autocomplete="on">
+        <div class="form-reg__subtitle form-log__subtitle"><?php esc_html_e('Логин', 'salatik'); ?></div>
+        <input type="text" class="form-reg__input" id="form-log__login" name="form-log__login" placeholder="<?php esc_html_e('Введите ваш пароль', 'salatik'); ?>" required autocomplete="off">
+        <div class="form-reg__subtitle form-log__subtitle"><?php esc_html_e('Пароль', 'salatik'); ?></div>
+        <input type="password" class="form-reg__input" id="form-log__password" name="form-log__password" placeholder="<?php esc_html_e('Введите пароль', 'salatik'); ?>" required autocomplete="on">
         <div class="checkbox form-log__checkbox">
             <input type="checkbox" id="form-log__checkbox" name="form-log__checkbox">
-            <span>Запомнить меня</span>
+            <span><?php esc_html_e('Запомнить меня', 'salatik'); ?></span>
         </div>
-        <button type="submit" id="form-reg__btn" class="form-reg__btn">Вход</button>
-        <a class="form-reg__log form-log__reg" href="#">Регистрация</a>
+        <button type="submit" id="form-reg__btn" class="form-reg__btn"><?php esc_html_e('Вход', 'salatik'); ?></button>
+        <a class="form-reg__log form-log__reg" href="#"><?php esc_html_e('Регистрация', 'salatik'); ?></a>
         <div class="form-reg__text form-log__text">
-            <span>Или</span>
+            <span><?php esc_html_e('Или', 'salatik'); ?></span>
         </div>
         <div class="form-reg__socials socials-reg form-log__socials">
             <a href="#" class="socials-reg__icon">
@@ -57,7 +57,7 @@ function salatik_login_fields() {
             </a>
         </div>
         <div class="form-log__remind">
-            <a href="#popup" class="popup-link">Забыли пароль?</a>
+            <a href="#popup" class="popup-link"><?php esc_html_e('Забыли пароль?', 'salatik'); ?></a>
         </div>
     </form>
     <?php
