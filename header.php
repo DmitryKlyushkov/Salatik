@@ -39,24 +39,25 @@
 
             <a href="<?php echo home_url(); ?>" class="header__logo">salatik</a>
             
-            <!-- login hidden -->
+            <!-- login hidden -->    
             <div class="login__hidden">
                 <div class="dropdown login-dropdown">
-                    <img src="<?php get_template_directory_uri(). 'assets/img/icons/user.png'; ?>" alt="">
+                    <img src="<?php bloginfo( 'template_url' ); ?>/assets/img/icons/user.png" alt="">
                 </div>
                 <ul class="dropdown__container login-dropdown__container">
-                    <li><a href="#" class="header__login">Вход</a></li>
-                    <li><a href="#" class="header__reg">Регистрация</a></li>
+                    <?php
+                    if(!is_user_logged_in(  )) { ?>
+                        <li><a href="/login" class="header__login">Вход</a></li>
+                        <li><a href="/registration" class="header__reg">Регистрация</a></li>
+                    <?php } else { ?>
+                        <li><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Выход" class="header__login">Выйти</a></li>
+                        <li><a href="/profile" class="header__reg">Профиль</a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <!-- login hidden -->
             <?php get_search_form(); ?>
-            <!-- <form action="" class="header__search-bar">
-                <button class="header__search-btn">
-                    <i class="icon-search"></i>
-                </button>
-                <input type="search" class="header__search-input" placeholder="Поиск рецептов" required>
-            </form> -->
+
             <?php wp_nav_menu( [
                 'theme_location'  	    => 'primary',
                 'menu'            		=> 'primary menu', 
@@ -66,15 +67,26 @@
                 'items_wrap'      	    => '<ul class="%2$s">%3$s</ul>',
                 'depth'           		=> 0,
             ] );?>
-            <?php wp_nav_menu( [
-                'theme_location'  	    => 'login',
-                'menu'            		=> 'login menu', 
-                'container'       		=>  false,
-                'menu_class'      	    => 'header__login-container', 
-                'echo'            		=> true,
-                'items_wrap'      	    => '<ul class="%2$s">%3$s</ul>',
-                'depth'           		=> 0,
-            ] );?>
+            <?php 
+                global $wp_admin_bar;
+                if (!is_user_logged_in(  )) {
+                wp_nav_menu( [
+                    'theme_location'  	    => 'login',
+                    'menu'            		=> 'login menu', 
+                    'container'       		=>  false,
+                    'menu_class'      	    => 'header__login-container', 
+                    'echo'            		=> true,
+                    'items_wrap'      	    => '<ul class="%2$s">%3$s</ul>',
+                    'depth'           		=> 0,
+                    ] );
+                } else { ?>
+                    <ul class="header__login-container">
+                        <li><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Выход" class="header__login">Выйти</a></li>
+                        <li><a href="/profile" class="header__reg">Профиль</a></li>
+                    </ul>
+                <?php  
+                }
+            ?>
             <div class="mobile-menu">
                 <?php wp_nav_menu( [
                     'theme_location'  	    => 'mobile_primary',

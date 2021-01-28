@@ -1528,6 +1528,7 @@ a.active > i {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: 30px -17px;
+  text-align: center;
 }
 
 .about__column {

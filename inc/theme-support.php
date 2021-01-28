@@ -42,3 +42,11 @@ function salatik_filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) 
 	
 	return $atts;
 }
+
+function category_has_parent($catid){
+    $category = get_category($catid);
+    if ($category->category_parent > 0){
+        return true;
+    }
+    return false;
+}
