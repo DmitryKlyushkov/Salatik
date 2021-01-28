@@ -10,7 +10,7 @@
 
 <article class="gallery__column">
     <div class="gallery__card">
-    <a class="gallery__img" href="<?php the_post_thumbnail_url(); ?>" data-caption="Описание">
+    <a class="gallery__img" href="<?php the_post_thumbnail_url(); ?>" data-caption="<?php esc_html_e('Описание', 'salatik'); ?>">
         <?php the_post_thumbnail( 'thumbnail', null ); ?>	
     </a>
     <div class="gallery__text"><?php the_content(); ?></div>

@@ -66,3 +66,10 @@ require SALATIK_THEME_DIR . '/inc/registration.php';
 // Rating System Settings
 require SALATIK_THEME_DIR . '/inc/rating-system.php';
 
+// Profile Form Settings
+require SALATIK_THEME_DIR . '/inc/profile-form.php';
+
+// Ajax Functions
+require SALATIK_THEME_DIR . '/inc/ajax.php';
+
+

@@ -1034,6 +1034,9 @@ input[type="file"]::-webkit-file-upload-button {
   min-height: 100%;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container {
@@ -1532,9 +1535,9 @@ a.active > i {
   display: -ms-flexbox;
   display: flex;
   font-size: 0;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 33.333%;
-  flex: 1 1 33.333%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 33.333%;
+  flex: 0 1 33.333%;
   padding: 17px 17px;
 }
 
@@ -1595,6 +1598,7 @@ a.active > i {
   display: -ms-flexbox;
   display: flex;
   font-size: 0;
+  justify-content: space-between;
 }
 
 .recipe__left {
@@ -2456,8 +2460,23 @@ a.active > i {
 }
 
 .main-panel__savetext {
+  display: block;
   font-size: 18px;
   color: #2e8b42;
+}
+
+.main-panel__savetext.active {
+  display: none;
+}
+
+.main-panel__hidden {
+  display: none;
+  font-size: 18px;
+  color: #2e8b42;
+}
+
+.main-panel__hidden.active {
+  display: block;
 }
 
 .properties {
@@ -5387,7 +5406,7 @@ a.active > i {
   .main-panel__rating > .rmp-icon--ratings {
     font-size: 16px;
   }
-  
+
   .rmp-rating-widget .rmp-icon--ratings {
     font-size: 16px;
   }
@@ -5402,6 +5421,10 @@ a.active > i {
   }
 
   .main-panel__savetext {
+    font-size: 12px;
+  }
+
+  .main-panel__hidden {
     font-size: 12px;
   }
 

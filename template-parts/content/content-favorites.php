@@ -1,7 +1,7 @@
 <?php
 /**
  *  ===========================
- *  RECIPE-SIMILAR POST FORMAT
+ *  RECIPE-FAVORITES POST FORMAT
  *  ===========================
  * 
  * @package salatik

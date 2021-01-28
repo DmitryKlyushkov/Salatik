@@ -656,3 +656,43 @@ document.addEventListener("keydown", function (e) {
       Element.prototype.msMatchesSelector;
   }
 })();
+
+var $profileForm = $('#profile-form');
+// Post Form Sumbition
+$profileForm.on('submit', function(e) {
+	  e.preventDefault();
+	
+	  // Form Inputs
+	  var
+	      form        = $(this),
+	      file_data   = form.find('#formImage')[0].files[0],
+	      category    = form.find('#category').val(),		
+	      title       = form.find('#profile-form__name').val(),
+	      content     = form.find('#profile-form__text').val();
+	
+	  // Ajax Url (data-url)
+	  var ajaxurl = form.data('url');
+	  // Form Data
+	  var form_data = new FormData();
+	  form_data.append('file', file_data);	
+	  form_data.append('category', category);	
+	  form_data.append('title', title);
+	  form_data.append('content', content);
+	  form_data.append('action', 'salatik_save_user_recipe');
+	
+	  $.ajax({
+	      url: ajaxurl,
+	      type: 'POST',
+	      contentType: false,
+	      processData: false,
+	      data: form_data,
+	      success: function (response) {
+	        setTimeout(function () {
+	          form.trigger("reset");
+	        }, 1000);
+	      },
+	      error : function(response) {
+	        console.log(response);
+	      },
+	  });
+});   
