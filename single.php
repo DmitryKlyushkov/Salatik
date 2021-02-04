@@ -51,7 +51,14 @@ $category = wp_get_post_categories( get_the_ID() );
 							<?php echo rmp_get_visual_rating( get_the_ID() ); ?>
 						</div>
 						<div class="main-panel__save" data-da="main-panel_bottom, 2, 525">
-							<?php echo do_shortcode( '[favorites]' ); ?>
+							<?php 
+							if(is_user_logged_in(  )) {
+								echo do_shortcode( '[favorites]' );
+							} else {
+								echo '<i class="icon-heart"></i>
+								<a href="#" data-action="add" class="main-panel__savetext main-panel__savetext--nolog">В закладки</a>';
+							}
+							?>
 						</div>
 					</div>
 					<div class="main-content__panel main-panel_bottom">
@@ -165,30 +172,62 @@ $category = wp_get_post_categories( get_the_ID() );
 							<div class="share__column">
 								<h6 class="share__title share__title--u">Поделиться в социальных сетях:</h6>
 								<div class="socials-footer__icons share__socials">
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/vk.svg" type="image/webp"><img src="img/socials/vk.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/facebook.svg" type="image/webp"><img src="img/socials/facebook.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/instagram.svg" type="image/webp"><img src="img/socials/instagram.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/google-plus.svg" type="image/webp"><img src="img/socials/google-plus.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/whatsapp.svg" type="image/webp"><img src="img/socials/whatsapp.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/viber.svg" type="image/webp"><img src="img/socials/viber.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/telegram.svg" type="image/webp"><img src="img/socials/telegram.svg" alt=""></picture>
-									</a>
-									<a href="#" class="socials-footer__icon">
-										<picture><source srcset="img/socials/odnoklassniki.svg" type="image/webp"><img src="img/socials/odnoklassniki.svg" alt=""></picture>
-									</a>
+								<?php 
+                                $socials = Kirki::get_option( 'salatik_footer', 'my_repeater_setting');
+                                foreach( $socials as $social ) :
+                                    if (isset($social['link_socials'])) :
+                                        switch ($social['link_socials']) {
+                                            case 'Facebook': ?>
+                                                <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                    <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/facebook.svg'; ?>" alt="facebook icon">
+                                                </a>
+                                            <?php
+                                            break;
+                                            
+                                            case 'Instagram': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/instagram.svg'; ?>" alt="instagram icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Google Plus': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/google-plus.svg'; ?>" alt="google-plus icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'WhatsUp': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/whatsapp.svg'; ?>" alt="whatsup icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Viber': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/viber.svg'; ?>" alt="viber icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Vkontakte': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/vk.svg'; ?>" alt="telegram icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Odnoklassniki': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/odnoklassniki.svg'; ?>" alt="odnoklassniki icon">
+                                            </a>
+                                            <?php
+                                            break;
+                                        } 
+                                    endif;
+                                endforeach; ?>
 								</div>
 							</div>
 							<div class="share__column">

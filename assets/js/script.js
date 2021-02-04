@@ -164,7 +164,7 @@ $slider.slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   speed: 300,
-  infinite: false,
+  infinite: true,
 });
 
 /* Gallery */
@@ -696,3 +696,8 @@ $profileForm.on('submit', function(e) {
 	      },
 	  });
 });   
+
+$('.main-panel__savetext--nolog').on('click', function(e){
+  e.preventDefault();
+  $(this).html('Войдите');
+})

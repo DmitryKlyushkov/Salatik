@@ -16,7 +16,7 @@ get_header(); ?>
 
 <main class="reg log">
             <div class="reg__bg log__bg">
-                <picture><source srcset="img/reg-login/login.webp" type="image/webp"><img src="img/reg-login/login.png" alt=""></picture>
+                <img src="<?php echo get_template_directory_uri() . '/assets/img/reg-login/login.webp'; ?>" alt="картинка салата">
             </div>
             <div class="log__form">
 

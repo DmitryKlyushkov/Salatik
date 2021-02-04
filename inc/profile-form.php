@@ -42,17 +42,6 @@ function salatik_profile_form() {
                     <input id="formImage" accept=".jpg, .png, .gif, webp" type="file" name="image" class="formImage">
                 </div>
                 <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
-                <div class="recepies-profile__photo file__preview"></div>
             </div>
             <textarea id="profile-form__text" class="recepies-profile__text" name="recepies-profile__text" placeholder="Описание рецепта"></textarea>
             <div class="recepies-profile__btn">

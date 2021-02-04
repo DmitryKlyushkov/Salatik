@@ -18,73 +18,51 @@
 
           <div class="slider__container">
             <section class="slider">
+
+              <?php 
+              $slides = Kirki::get_option( 'salatik_slider', 'my_repeater_setting');
+              foreach( $slides as $slide ) : 
+                $img_id = $slide["link_img"];
+                $img_url = wp_get_attachment_image_url( $img_id, 'full' );
+                $img_alt = get_post_meta($img_id, '_wp_attachment_image_alt', TRUE);
+              ?>
+
               <div class="slider__slide">
-                <div class="slider__bg">
-                  <picture><source srcset="img/main-screen/main-bg.webp" type="image/webp"><img src="img/main-screen/main-bg.png" alt=""></picture>
+                <div id="slide_1_img" class="slider__bg">
+                  <img src="<?php echo $img_url ?>" alt="<?php echo $img_alt ?>">
                 </div>
-                <div class="slider__text">
-                  <h1>Салаты</h1>
-                  <h2>на все случаи жизни</h2>
+                <div id="slide_1_text" class="slider__text">
+                  <h1><?php echo $slide["link_title"] ?></h1>
+                  <h2><?php echo $slide["link_text"] ?></h2>
                 </div>
               </div>
-              <div class="slider__slide">
-                <div class="slider__bg">
-                  <picture><source srcset="img/gallery/01.webp" type="image/webp"><img data-lazy="img/gallery/01.png" src="img/gallery/01.png" alt=""></picture>
-                </div>
-                <div class="slider__text">
-                  <h1>Салаты</h1>
-                  <h2>на все случаи жизни</h2>
-                </div>
-              </div>
-              <div class="slider__slide">
-                <div class="slider__bg">
-                  <picture><source srcset="img/main-screen/main-bg.webp" type="image/webp"><img data-lazy="img/main-screen/main-bg.png" src="img/main-screen/main-bg.png" alt=""></picture>
-                </div>
-                <div class="slider__text">
-                  <h1>Салаты</h1>
-                  <h2>на все случаи жизни</h2>
-                </div>
-              </div>
-              <div class="slider__slide">
-                <div class="slider__bg">
-                  <picture><source srcset="img/main-screen/main-bg.webp"alt="" type="image/webp"><img data-lazy="img/main-screen/main-bg.png" src="img/main-screen/main-bg.png"alt=""></picture>
-                </div>
-                <div class="slider__text">
-                  <h1>Салаты</h1>
-                  <h2>на все случаи жизни</h2>
-                </div>
-              </div>
+
+              <?php endforeach; ?>
+
             </section>
           </div>
 
           <section class="about">
-            <h3 class="about__title">Смотрите в этом блоге</h3>
+            <h3 class="about__title"> <?php echo Kirki::get_option( 'salatik', 'text_setting' ); ?></h3>
             <div class="about__cards">
               <div class="about__cards_container">
+
+                <?php 
+                $cards = Kirki::get_option( 'salatik', 'my_repeater_setting');
+                foreach( $cards as $card ) : 
+                  $card_icon = $card["link_icon"];
+                  $card_text = $card["link_text"];
+                ?>
+
                 <div class="about__card card">
                   <div class="card__img">
-                    <i class="icon-salad"></i>
+                    <i class="<?php echo $card_icon ?>"></i>
                   </div>
-                  <div class="card__text">Лучшие весенние салаты</div>
+                  <div class="card__text"><?php echo $card_text ?></div>
                 </div>
-                <div class="about__card card">
-                  <div class="card__img">
-                    <i class="icon-scale"></i>
-                  </div>
-                  <div class="card__text">Салаты для похудения</div>
-                </div>
-                <div class="about__card card">
-                  <div class="card__img">
-                    <i class="icon-chef"></i>
-                  </div>
-                  <div class="card__text">Кулинарные секреты</div>
-                </div>
-                <div class="about__card card">
-                  <div class="card__img">
-                    <i class="icon-book"></i>
-                  </div>
-                  <div class="card__text">И много других полезных рецептов!</div>
-                </div>
+
+                <?php endforeach; ?>
+
               </div>
             </div>
             <div class="about__recipes">
@@ -200,40 +178,7 @@
                        get_template_part('template-parts/content/content-recipe-home-bottom', get_post_format());
                      endwhile;
                   endif;
-
                 ?>
-                <!-- <div class="gallery__column">
-                  <div class="gallery__card">
-                    <a class="gallery__img" href="img/gallery/01.png" data-caption="Описание">
-                      <picture><source srcset="img/gallery/01.webp" type="image/webp"><img src="img/gallery/01.png" alt=""></picture>
-                    </a>
-                    <div class="gallery__text">Описание</div>
-                  </div>
-                </div>
-                <div class="gallery__column">
-                  <div class="gallery__card">
-                    <a class="gallery__img" href="img/gallery/01.png"data-caption="Описание">
-                      <picture><source srcset="img/gallery/01.webp" type="image/webp"><img src="img/gallery/01.png" alt=""></picture>
-                    </a>
-                    <div class="gallery__text">Описание</div>
-                  </div>
-                </div>
-                <div class="gallery__column">
-                  <div class="gallery__card">
-                    <a class="gallery__img" href="img/gallery/01.png" data-caption="Описание">
-                      <picture><source srcset="img/gallery/01.webp" type="image/webp"><img src="img/gallery/01.png" alt=""></picture>
-                    </a>
-                    <div class="gallery__text">Описание</div>
-                  </div>
-                </div>
-                <div class="gallery__column">
-                  <div class="gallery__card">
-                    <a class="gallery__img" href="img/gallery/01.png" data-caption="Описание">
-                      <picture><source srcset="img/gallery/01.webp" type="image/webp"><img src="img/gallery/01.png" alt=""></picture>
-                    </a>
-                    <div class="gallery__text">Описание</div>
-                  </div>
-                </div> -->
               </div>
             </div>
           </section>

@@ -72,4 +72,10 @@ require SALATIK_THEME_DIR . '/inc/profile-form.php';
 // Ajax Functions
 require SALATIK_THEME_DIR . '/inc/ajax.php';
 
+// Custom Customizer API Settings
+require SALATIK_THEME_DIR . '/inc/customizer.php';
+
+
+
+
 

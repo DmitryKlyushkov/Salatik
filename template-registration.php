@@ -14,7 +14,7 @@
 
 <main class="reg">
     <div class="reg__bg">
-        <picture><source srcset="img/reg-login/registration.webp" type="image/webp"><img src="img/reg-login/registration.png" alt=""></picture>
+        <img src="<?php echo get_template_directory_uri() . '/assets/img/reg-login/registration.webp'; ?>" alt="изображение салата с рыбой и рисом">
     </div>
     <div class="reg__form">
 

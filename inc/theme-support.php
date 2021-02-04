@@ -43,6 +43,16 @@ function salatik_filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) 
 	return $atts;
 }
 
+// Redirect Wp-admin URL
+function only_admin()
+{
+if ( ! current_user_can( 'manage_options' ) && '/wp-admin/admin-ajax.php' != $_SERVER['PHP_SELF'] ) {
+                wp_redirect( site_url() );
+    }
+}
+add_action( 'admin_init', 'only_admin', 1 );
+
+// Check If Category Has A Parent
 function category_has_parent($catid){
     $category = get_category($catid);
     if ($category->category_parent > 0){
@@ -50,3 +60,4 @@ function category_has_parent($catid){
     }
     return false;
 }
+

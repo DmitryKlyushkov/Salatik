@@ -157,8 +157,3 @@ function setPostViews($postID) {
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 /**==================================================================================================================== */
- // Activate Profile Menu
- function salatik_register_profile_menu() {
-	register_nav_menu( 'profile', 'profile menu' );
-}
-add_action( 'after_setup_theme', 'salatik_register_profile_menu' ); 

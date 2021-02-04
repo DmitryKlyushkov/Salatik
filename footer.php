@@ -11,8 +11,8 @@
             <div class="footer__container">
                 <div class="footer__row">
                     <div class="footer__column">
-                        <div class="footer__logo">salatik</div>
-                        <div class="footer__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sapien, tincidunt rutrum fringilla nec, dictum eu ligula. Interdum et malesuada fames ac ante ipsum primis in</div>
+                        <div class="footer__logo"><?php echo bloginfo('name'); ?></div>
+                        <div class="footer__text"><?php echo bloginfo('description'); ?></div>
                     </div>
                     <div class="footer__column">
                         <div class="footer__title">Подписывайтесь на обновления и получайте новые рецепты каждый день!</div>
@@ -36,32 +36,65 @@
                             'depth'           		=> 0,
                         ] );?>
                         <div class="footer__socials socials-footer">
-                            <div class="socials-footer__title">Мы в социальных сетях</div>
+                            <?php $socials_title = Kirki::get_option( 'salatik_footer', 'text_setting');  ?>
+                            <div class="socials-footer__title"><?php echo $socials_title ?></div>
                             <div class="socials-footer__icons">
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/vk.svg" type="image/webp"><img src="img/socials/vk.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/facebook.svg" type="image/webp"><img src="img/socials/facebook.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/instagram.svg" type="image/webp"><img src="img/socials/instagram.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/google-plus.svg" type="image/webp"><img src="img/socials/google-plus.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/whatsapp.svg" type="image/webp"><img src="img/socials/whatsapp.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/viber.svg" type="image/webp"><img src="img/socials/viber.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/telegram.svg" type="image/webp"><img src="img/socials/telegram.svg" alt=""></picture>
-                                </a>
-                                <a href="#" class="socials-footer__icon">
-                                    <picture><source srcset="img/socials/odnoklassniki.svg" type="image/webp"><img src="img/socials/odnoklassniki.svg" alt=""></picture>
-                                </a>
+                                <?php 
+                                $socials = Kirki::get_option( 'salatik_footer', 'my_repeater_setting');
+                                foreach( $socials as $social ) :
+                                    if (isset($social['link_socials'])) :
+                                        switch ($social['link_socials']) {
+                                            case 'Facebook': ?>
+                                                <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                    <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/facebook.svg'; ?>" alt="facebook icon">
+                                                </a>
+                                            <?php
+                                            break;
+                                            
+                                            case 'Instagram': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/instagram.svg'; ?>" alt="instagram icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Google Plus': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/google-plus.svg'; ?>" alt="google-plus icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'WhatsUp': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/whatsapp.svg'; ?>" alt="whatsup icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Viber': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/viber.svg'; ?>" alt="viber icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Vkontakte': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/vk.svg'; ?>" alt="telegram icon">
+                                            </a>
+                                            <?php
+                                            break;
+
+                                            case 'Odnoklassniki': ?>
+                                            <a href="<?php echo $social['link_url']; ?>" class="socials-footer__icon">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/img/socials/odnoklassniki.svg'; ?>" alt="odnoklassniki icon">
+                                            </a>
+                                            <?php
+                                            break;
+                                        } 
+                                    endif;
+                                endforeach; ?>
                             </div>
                         </div>
                     </div>

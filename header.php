@@ -37,7 +37,7 @@
             </div>
             <!-- burger-menu -->
 
-            <a href="<?php echo home_url(); ?>" class="header__logo">salatik</a>
+            <a href="<?php echo home_url(); ?>" class="header__logo"><?php echo bloginfo('name'); ?></a>
             
             <!-- login hidden -->    
             <div class="login__hidden">

@@ -8,11 +8,9 @@
  * 
  * @package salatik
  */
-?>
 
-<?php 
 if ( !(is_user_logged_in() ) ) {
-    wp_redirect( home_url('login') );
+    wp_redirect( home_url('/login') );
     exit;
 }
 // global $wpdb;
@@ -134,18 +132,19 @@ switch(get_the_author_meta('user_level', $user_id )) {
                                     $user_id = get_current_user_id();
                                     $favorites = get_user_meta( $user_id, 'wfm_favorites' );
                                     $args = array(
-                                        'post_type' => 'recipe',
                                         'post__in'  => $favorites,
+                                        'post_type' => 'recipe',
                                     );
+                                    if (empty($favorites)) {
+                                        $args['post_type'] = '';
+                                    }
                                     $query = new WP_Query( $args );
-
                                     if ( $query->have_posts() ) :
                                         while ( $query->have_posts() ) : $query->the_post();
                                             get_template_part('template-parts/content/content-favorites', get_post_format());
                                         endwhile;
                                      endif;
                                      wp_reset_postdata();
-
                                 ?>
                             </div>
                         </div>

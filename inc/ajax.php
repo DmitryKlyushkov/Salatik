@@ -34,7 +34,16 @@ function salatik_save_user_recipe() {
        $user_id = get_current_user_id();
        
        // Input Variables
-       $category = wp_strip_all_tags($_POST['category']);
+       $category_name = $_POST['category'];
+       $cat_id = get_cat_ID( $category_name );
+       $category = get_category($cat_id);
+       $parent = category_has_parent($cat_id);
+        if ($parent) {
+            $parent_cat = get_category($category->parent);
+            $parent_id = $parent_cat->cat_ID;
+        } else {
+            $parent_id = $cat_id;
+        }
        $title = wp_strip_all_tags($_POST['title']);
        $content = wp_strip_all_tags($_POST['content']);
        $args = array(
@@ -43,7 +52,7 @@ function salatik_save_user_recipe() {
            'post_type'			=> 'recipe',										
            'post_status' 		=> 'publish',	// publish, future, draft, pending, private, trash, auto-draft, inherit
            'post_author'		=> $user_id,
-           'post_category'		=> $category,
+           'post_category'		=> array($parent_id, $cat_id),
            'post_title' 		=> $title,
            'post_content'		=> $content
        );

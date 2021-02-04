@@ -2865,6 +2865,7 @@ a.active > i {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .share__column:nth-child(2) {
@@ -2872,6 +2873,10 @@ a.active > i {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
+}
+
+.rmp-widgets-container.rmp-wp-plugin.rmp-main-container {
+  margin: 0;
 }
 
 .share__title {
@@ -3021,6 +3026,10 @@ a.active > i {
   flex: 0 0 41%;
 }
 
+.card-similars__column a {
+  height: 100%;
+}
+
 .card-similars__title {
   font-size: 20px;
   line-height: 23px;
@@ -3067,7 +3076,7 @@ a.active > i {
 
 .card-similars__img {
   position: relative;
-  min-height: 170px;
+  height: 100%;
 }
 
 .card-similars__img:hover {
@@ -3076,8 +3085,8 @@ a.active > i {
 
 .card-similars__img img {
   position: absolute;
-  -o-object-fit: cover;
-  object-fit: cover;
+  /* -o-object-fit: cover;
+  object-fit: cover; */
   width: 100%;
   height: 100%;
   top: 0;
@@ -3639,8 +3648,11 @@ a.active > i {
   justify-content: space-between;
 }
 
-.recipe-popular__unit:not(:last-child) {
-  margin-right: 15px;
+.recipe-popular__unit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .recipe-popular__unit a > i:hover {
@@ -3649,7 +3661,7 @@ a.active > i {
 
 .recipe-popular__unit i {
   color: #f2994a;
-  margin-right: 4px;
+  margin: 0 4px 4px 0;
   font-size: 14px;
 }
 
