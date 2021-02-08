@@ -6,8 +6,15 @@
  *
  * @package salatik
  */
-setPostViews(get_the_ID());
-$category = wp_get_post_categories( get_the_ID() );
+$post_id = get_the_ID();
+setPostViews($post_id);
+$category = wp_get_post_categories( $post_id );
+
+$meta_values = trim( get_post_meta( $post_id, 'ingredients', true ) );
+$exploded_values = explode(",", $meta_values);
+preg_match_all("/[A-Za-zА-Яа-я]+\s([А-Яа-я]?)+/mu", $meta_values, $names, PREG_PATTERN_ORDER );
+preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORDER );
+				
 ?>
 <?php get_header(); ?>
 
@@ -24,33 +31,54 @@ $category = wp_get_post_categories( get_the_ID() );
 
 				<section class="main-content__inside">
 					<div class="main-content__img">
+
 						<?php the_post_thumbnail( 'full' ); ?>	
+
 					</div>
 					<div class="main-content__panel main-panel">
 						<div class="main-panel__user">
 							<a href="">
 								<i class="icon-user"></i>
 							</a>
-							<span class="main-panel__username"><?php the_author_meta('display_name', 1); ?></span>
+							<span class="main-panel__username">
+
+								<?php the_author_meta('display_name', 1); ?>
+
+							</span>
 						</div>
 						<div class="main-panel__date">
 							<i class="icon-date"></i>
-							<span class="main-panel__datetime"><?php the_time( 'd.m.Y' ); ?></span>
+							<span class="main-panel__datetime">
+
+								<?php the_time( 'd.m.Y' ); ?>
+
+							</span>
 						</div>
 						<div class="main-panel__comments">
 							<a href="<?php the_permalink() ?>#comments">
 								<i class="icon-commets"></i>
 							</a>
-							<span class="main-panel__commentsnum"><?php echo get_comments_number(); ?></span>
+							<span class="main-panel__commentsnum">
+
+								<?php echo get_comments_number(); ?>
+
+							</span>
 						</div>
 						<div class="main-panel__views">
 							<i class="icon-views"></i>
-							<span class="main-panel__viewsnum"><?php echo getPostViews(get_the_ID()); ?></span>
+							<span class="main-panel__viewsnum">
+
+								<?php echo getPostViews($post_id); ?>
+
+							</span>
 						</div>
 						<div class="main-panel__rating">
-							<?php echo rmp_get_visual_rating( get_the_ID() ); ?>
+
+							<?php echo rmp_get_visual_rating( $post_id ); ?>
+
 						</div>
 						<div class="main-panel__save" data-da="main-panel_bottom, 2, 525">
+
 							<?php 
 							if(is_user_logged_in(  )) {
 								echo do_shortcode( '[favorites]' );
@@ -59,6 +87,7 @@ $category = wp_get_post_categories( get_the_ID() );
 								<a href="#" data-action="add" class="main-panel__savetext main-panel__savetext--nolog">В закладки</a>';
 							}
 							?>
+
 						</div>
 					</div>
 					<div class="main-content__panel main-panel_bottom">
@@ -67,14 +96,20 @@ $category = wp_get_post_categories( get_the_ID() );
 
 				<section class="properties">
 					<div class="properties__header">
-						<h3 class="properties__title"><?php the_title(); ?></h3>
+						<h3 class="properties__title">
+
+							<?php the_title(); ?>
+
+						</h3>
 						<div class="properties__time">
 							<i class="icon-watch"></i>
 							<h6 class="properties__time--value">30 минут</h6>
 						</div>
 					</div>
 					<div class="properties__text">
-						<?php the_content(); ?>  					
+
+						<?php the_content(); ?>  	
+
 					</div>
 					<div class="properties__footer">
 						<div class="properties__ingredients ingredients">
@@ -84,26 +119,24 @@ $category = wp_get_post_categories( get_the_ID() );
 									<span class="ingredients__header--value">Ингредиенты:</span>
 								</div>
 								<div class="ingredients__content">
+
+								<?php foreach ($names as $key => $value): ?>
+
 									<div class="ingredients__row">
-										<div class="ingredients__ingredient">Руккола</div>
-										<div class="ingredients__amount">100 г</div>
+										<div class="ingredients__ingredient">
+										
+											<?php echo $names[0][$key];?>
+
+										</div>
+										<div class="ingredients__amount">
+										
+											<?php echo $numbers[0][$key];?>
+											
+										</div>
 									</div>
-									<div class="ingredients__row">
-										<div class="ingredients__ingredient">Томаты черри</div>
-										<div class="ingredients__amount">50 г</div>
-									</div>
-									<div class="ingredients__row">
-										<div class="ingredients__ingredient">Оливковое масло</div>
-										<div class="ingredients__amount">2 ст.л</div>
-									</div>
-									<div class="ingredients__row">
-										<div class="ingredients__ingredient">Болгарский перец</div>
-										<div class="ingredients__amount">1 шт</div>
-									</div>
-									<div class="ingredients__row">
-										<div class="ingredients__ingredient">Сыр рикотта</div>
-										<div class="ingredients__amount">50 г</div>
-									</div>
+
+								<?php endforeach; ?>
+
 								</div>
 							</div>
 						</div>

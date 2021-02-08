@@ -44,6 +44,10 @@ function salatik_profile_form() {
                 <div class="recepies-profile__photo file__preview"></div>
             </div>
             <textarea id="profile-form__text" class="recepies-profile__text" name="recepies-profile__text" placeholder="Описание рецепта"></textarea>
+            <div class="recepies-profile__subtitle">Укажите ингредиенты(количество) через запятую</div>
+            <input type="text" id="profile-form__ingredients" class="recepies-profile__name" name="recepies-profile__ingredients" placeholder="Например: Руколла(100г), Сыр(50г)">
+            <div class="recepies-profile__subtitle">Укажите калорийность(количество) через запятую</div>
+            <input type="text" id="profile-form__calories" class="recepies-profile__name" name="profile-form__calories" placeholder="Например: Белки(10г), Жиры(15г)">
             <div class="recepies-profile__btn">
                 <button type="submit">Добавить</button>
             </div>

@@ -669,7 +669,9 @@ $profileForm.on('submit', function(e) {
 	      category    = form.find('#category').val(),		
 	      title       = form.find('#profile-form__name').val(),
 	      content     = form.find('#profile-form__text').val();
-	
+        ingredients = form.find('#profile-form__ingredients').val();
+        calories    = form.find('#profile-form__calories').val();
+
 	  // Ajax Url (data-url)
 	  var ajaxurl = form.data('url');
 	  // Form Data
@@ -678,6 +680,8 @@ $profileForm.on('submit', function(e) {
 	  form_data.append('category', category);	
 	  form_data.append('title', title);
 	  form_data.append('content', content);
+    form_data.append('ingredients', ingredients);
+    form_data.append('calories', calories);
 	  form_data.append('action', 'salatik_save_user_recipe');
 	
 	  $.ajax({
@@ -700,4 +704,8 @@ $profileForm.on('submit', function(e) {
 $('.main-panel__savetext--nolog').on('click', function(e){
   e.preventDefault();
   $(this).html('Войдите');
-})
+});
+
+$('#profile-form__ingredients').inputmask("((a{1,} ){1,}\(9{1,}a{1,}\), ){1,}");
+$('#profile-form__calories').inputmask("Белки\(9{1,}г\), Жиры\(9{1,}г\), Углеводы\(9{1,}г\), Калорийность\(9{1,}Ккал\)");
+

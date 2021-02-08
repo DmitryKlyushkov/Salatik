@@ -73,7 +73,14 @@ Kirki::add_field( 'salatik_slider', [
 			'label'       => esc_html__( 'Описание слайда', 'salatik' ),
 			'default'     => '',
 		],
-	]
+	],
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'salatik_slider_my_repeater_setting' => array(
+			'selector' => '.slider__text',
+			'render_callback' => '__return_false'
+			)
+		),
 ] );
 
 /**===================================================CARDS PANEL============================================================== */
@@ -121,6 +128,13 @@ Kirki::add_field( 'salatik', [
 	'choices'     => [
 		'alpha' => true,
 	],
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'color_setting_rgba' => array(
+			'selector' => '.about__title',
+			'render_callback' => '__return_false'
+			)
+		),
 ] );
 
 // Add New Card
@@ -148,7 +162,14 @@ Kirki::add_field( 'salatik', [
 			'description' => esc_html__( 'Введите описание под карточкой', 'salatik' ),
 			'default'     => '',
 		],
-	]
+	],
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'salatik_my_repeater_setting' => array(
+			'selector' => '.about__cards_container',
+			'render_callback' => '__return_false'
+			)
+		),
 ] );
 
 // Card Title Color Callback
@@ -192,6 +213,13 @@ Kirki::add_field( 'salatik_footer', [
 	'label'    => esc_html__( 'Заголовок', 'salatik' ),
 	'section'  => 'section_footer_socials_title',
 	'priority' => 10,
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'text_setting' => array(
+			'selector' => '.socials-footer__title',
+			'render_callback' => '__return_false'
+			)
+		),
 ] );
 
 // Add New Socials
@@ -224,5 +252,40 @@ Kirki::add_field( 'salatik_footer', [
 			'type'        => 'text',
 			'label'       => esc_html__( 'Ссылка', 'salatik' ),
 		],
-	]
+	],
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'salatik_footer_my_repeater_setting' => array(
+			'selector' => '.socials-footer__icons',
+			'render_callback' => '__return_false'
+			)
+		),
 ] );
+
+// Bloginfo Visible Edit Shortcuts
+function salatik_register_blogname_partials( $wp_customize ) {
+
+    // Abort if selective refresh is not available.
+    if ( ! isset( $wp_customize->selective_refresh ) ) {
+        return;
+    }
+
+    $wp_customize->selective_refresh->add_partial( 'header_site_title', [
+        'selector'        => '.header__logo',
+        'settings'        => [ 'blogname' ],
+        'render_callback' => '__return_false',
+	] );
+
+    $wp_customize->selective_refresh->add_partial( 'document_title', [
+        'selector'        => '.footer__logo',
+        'settings'        => [ 'blogname' ],
+        'render_callback' => '__return_false',
+	] );
+
+	$wp_customize->selective_refresh->add_partial( 'document_description', [
+        'selector'        => '.footer__text',
+        'settings'        => [ 'blogdescription' ],
+        'render_callback' => '__return_false',
+	] );
+}
+add_action( 'customize_register', 'salatik_register_blogname_partials' );

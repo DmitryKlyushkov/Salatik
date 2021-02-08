@@ -46,6 +46,9 @@ function salatik_save_user_recipe() {
         }
        $title = wp_strip_all_tags($_POST['title']);
        $content = wp_strip_all_tags($_POST['content']);
+       $ingredients = $_POST['ingredients'];
+       $calories = $_POST['calories'];
+
        $args = array(
            'comment_status' 	=> 'open',                                             		
            'post_name'		    => 'my-custom-slug',							
@@ -61,6 +64,8 @@ function salatik_save_user_recipe() {
        $post_id = wp_insert_post( $args ); 
        // Set Post Thumbnail
        set_post_thumbnail( $post_id, $upload_id );
+       add_post_meta( $post_id, 'ingredients', $ingredients, true);
+       add_post_meta( $post_id, 'calories', $calories, true);
 }
 
     die();

@@ -22,6 +22,9 @@ add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form'
 // Post Formats Support
 add_theme_support( 'post-formats', array( 'video', 'gallery' ));
 
+//Visible Edit Shortcuts
+add_theme_support( 'customize-selective-refresh-widgets' );
+
 
 // Delete all <li> classes in menu 
 add_filter( 'nav_menu_css_class', '__return_empty_array' );

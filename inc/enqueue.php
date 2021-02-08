@@ -21,6 +21,7 @@
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'beguettebox', get_template_directory_uri(  ) . '/assets/js/libs/baguetteBox.min.js', array('jquery'), null, true );
     wp_enqueue_script( 'slick', get_template_directory_uri(  ) . '/assets/js/libs/slick.min.js', array('jquery'), null, true );
+    wp_enqueue_script( 'mask', get_template_directory_uri(  ) . '/assets/js/libs/jquery.inputmask.min.js', array('jquery'), null, true );
     wp_enqueue_script( 'script', get_template_directory_uri(  ) . '/assets/js/script.min.js', array('jquery'), null, true );
  }
 

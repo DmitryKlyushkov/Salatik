@@ -6,6 +6,7 @@
  *
  * @package salatik
  */
+
 $category = get_category( get_query_var( 'cat' ) );
 $cat_id = $category->cat_ID;
 $parent = category_has_parent($cat_id);
