@@ -17,6 +17,9 @@
  *
  * @package salatik
  */
+
+ $title =  Kirki::get_option( 'salatik_contacts', 'text_setting' );
+ $desc=  Kirki::get_option( 'salatik_contacts_2', 'text_setting' );
 ?>
 
 <?php get_header(); ?>
@@ -28,34 +31,34 @@
             <div class="main-content">
                 <section class="category contacts__header">
                     <div class="category__content">
-                        <h2 class="category__title">Контакты</h2>
-                        <div class="category__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sapien, tincidunt rutrum fringilla nec, dictum eu ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum cursus lorem a leo imperdiet, ac dignissim</div>
+                        <h2 class="category__title"><?php echo $title ?></h2>
+                        <div class="category__text"><?php echo $desc ?></div>
                     </div>
                 </section>
                 <section class="contacts">
                     <div class="contacts__content recepies-profile">
                         <form action="" class="contacts__form form-contacts">
-                            <h4 class="form-contacts__title recepies-profile__subtitle">Остались вопросы?</h4>
-                            <div class="form-contacts__subtitle">Тема сообщения</div>
+                            <h4 class="form-contacts__title recepies-profile__subtitle"><?php esc_html_e('Остались вопросы?', 'salatik'); ?></h4>
+                            <div class="form-contacts__subtitle"><?php esc_html_e('Тема сообщения', 'salatik'); ?></div>
                             <div class="form-contacts__select recepies-profile__select">
-                                <div class="form-contacts__placeholder recepies-profile__placeholder">Выберите тему</div>
+                                <div class="form-contacts__placeholder recepies-profile__placeholder"><?php esc_html_e('Выберите тему', 'salatik'); ?></div>
                                 <i class="icon-arrow"></i>
                                 <select  name="recepies-profile__select">
-                                    <option value="Салаты">Салаты</option>
-                                    <option value="Бутерброды">Бутерброды</option>
-                                    <option value="Канапе">Канапе</option>
-                                    <option value="Гренки">Гренки</option>
-                                    <option value="Тосты">Тосты</option>
-                                    <option value="Тартинки">Тартинки</option>
-                                    <option value="Закуски">Закуски</option>
-                                    <option value="Заправки">Заправки</option>
+                                    <option value="Салаты"><?php esc_html_e('Салаты', 'salatik'); ?></option>
+                                    <option value="Бутерброды"><?php esc_html_e('Бутерброды', 'salatik'); ?></option>
+                                    <option value="Канапе"><?php esc_html_e('Канапе', 'salatik'); ?></option>
+                                    <option value="Гренки"><?php esc_html_e('Гренки', 'salatik'); ?></option>
+                                    <option value="Тосты"><?php esc_html_e('Тосты', 'salatik'); ?></option>
+                                    <option value="Тартинки"><?php esc_html_e('Тортинки', 'salatik'); ?></option>
+                                    <option value="Закуски"><?php esc_html_e('Закуски', 'salatik'); ?></option>
+                                    <option value="Заправки"><?php esc_html_e('Заправки', 'salatik'); ?></option>
                                 </select>
                             </div>
-                            <input type="text" class="form-contacts__name recepies-profile__name" name="form-contacts__name" placeholder="Ваше имя">
-                            <input type="text" class="form-contacts__email recepies-profile__name" name="form-contacts__email" placeholder="Введите ваш email">
-                            <textarea class="form-contacts__text recepies-profile__text" name="form-contacts__text" placeholder="Введите текст сообщения"></textarea>
+                            <input type="text" class="form-contacts__name recepies-profile__name" name="form-contacts__name" placeholder="<?php esc_html_e('Ваше имя', 'salatik'); ?>">
+                            <input type="text" class="form-contacts__email recepies-profile__name" name="form-contacts__email" placeholder="<?php esc_html_e('Введите ваш емэйл', 'salatik'); ?>">
+                            <textarea class="form-contacts__text recepies-profile__text" name="form-contacts__text" placeholder="<?php esc_html_e('Введите текст сообщения', 'salatik'); ?>"></textarea>
                             <div class="form-contacts__btn recepies-profile__btn">
-                                <button type="submit">Отправить</button>
+                                <button type="submit"><?php esc_html_e('Отправить', 'salatik'); ?></button>
                             </div>
                         </form>
                     </div>

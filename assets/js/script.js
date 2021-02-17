@@ -350,8 +350,8 @@ $checkbox.on("click", function (event) {
 })();
 
 /* Dots */
-$ingredient.after('<div class="dots"></div>');
-$chem.after('<div class="dots"></div>');
+// $ingredient.after('<div class="dots"></div>');
+// $chem.after('<div class="dots"></div>');
 
 /* Select Placeholder */
 function setPlaceholder(){
@@ -366,7 +366,7 @@ $select.on('change', setPlaceholder);
  var formPreview = document.querySelectorAll(".file__preview");
 
  if(formImage!=null){
-  formImage.addEventListener("change", () => {
+  formImage.addEventListener("change", (e) => {
     uploadFile(formImage.files[0]);
   });
  }
@@ -406,7 +406,39 @@ $select.on('change', setPlaceholder);
 
  /* Avatar upload */
  var profileDownload = document.getElementById("profile__download");
- var AvatarPreview = document.querySelectorAll(".profile__avatar");
+ var avatarPreview = document.querySelectorAll(".profile__avatar");
+
+ var $avatarForm = $('#avatar-form');
+ // Post Form Sumbition
+ $avatarForm.on('submit', function(e) {
+     e.preventDefault();
+   
+     // Form Inputs
+     var
+         avatarForm = $(this),
+         fileData   = avatarForm.find('.profile__download')[0].files[0];
+
+     // Ajax Url (data-url)
+     var avatarajaxurl = avatarForm.data('url');
+     // Form Data
+     var formData = new FormData();
+     formData.append('file', fileData);	
+     formData.append('action', 'salatik_save_user_avatar');
+   
+     $.ajax({
+         url: avatarajaxurl,
+         type: 'POST',
+         contentType: false,
+         processData: false,
+         data: formData,
+         success: function (response) {
+          console.log(response);
+         },
+         error : function(response) {
+           console.log(response);
+         },
+     });
+ });   
 
  if(profileDownload!=null){
   profileDownload.addEventListener("change", () => {
@@ -433,13 +465,13 @@ $select.on('change', setPlaceholder);
 
    var reader = new FileReader();
    reader.onload = function (e) {
-     for(let i=0; i<AvatarPreview.length; i++) {
-       if(AvatarPreview[i].innerHTML === ''){
-        AvatarPreview[i].innerHTML = `<img src="${e.target.result}" alt="Фото">`;
+     for(let i=0; i<avatarPreview.length; i++) {
+       if(avatarPreview[i].innerHTML === ''){
+        avatarPreview[i].innerHTML = `<img src="${e.target.result}" alt="Фото">`;
         return;
        } else {
-        AvatarPreview[i].innerHTML = '';
-        AvatarPreview[i].innerHTML = `<img src="${e.target.result}" alt="Фото">`;
+        avatarPreview[i].innerHTML = '';
+        avatarPreview[i].innerHTML = `<img src="${e.target.result}" alt="Фото">`;
         return;
        }
      }
@@ -671,7 +703,7 @@ $profileForm.on('submit', function(e) {
 	      content     = form.find('#profile-form__text').val();
         ingredients = form.find('#profile-form__ingredients').val();
         calories    = form.find('#profile-form__calories').val();
-
+        time        = form.find('#profile-form__time').val();
 	  // Ajax Url (data-url)
 	  var ajaxurl = form.data('url');
 	  // Form Data
@@ -682,6 +714,7 @@ $profileForm.on('submit', function(e) {
 	  form_data.append('content', content);
     form_data.append('ingredients', ingredients);
     form_data.append('calories', calories);
+    form_data.append('time', time);
 	  form_data.append('action', 'salatik_save_user_recipe');
 	
 	  $.ajax({
@@ -706,6 +739,7 @@ $('.main-panel__savetext--nolog').on('click', function(e){
   $(this).html('Войдите');
 });
 
-$('#profile-form__ingredients').inputmask("((a{1,} ){1,}\(9{1,}a{1,}\), ){1,}");
-$('#profile-form__calories').inputmask("Белки\(9{1,}г\), Жиры\(9{1,}г\), Углеводы\(9{1,}г\), Калорийность\(9{1,}Ккал\)");
-
+//Inputmask({ regex:  String.raw`([a-zA-Zа-яА-Я]+ ([a-zA-Zа-яА-Я]+ )*\([^()]+\), )+` }).mask('#profile-form__ingredients');
+Inputmask({ regex:  String.raw`([a-zA-Zа-яА-Я]+ ([a-zA-Zа-яА-Я]+ )*\([^()]+\), )+` }).mask('#profile-form__ingredients');
+Inputmask({ regex:  String.raw`Белки \(\d+(\.?\d+)?г\), Жиры \(\d+(\.?\d+)?г\), Углеводы \(\d+(\.?\d+)?г\), Калорийность \(\d+(\.?\d+)?Ккал\)` }).mask('#profile-form__calories');
+$('#profile-form__time').inputmask("9{1,} минут(ы)");

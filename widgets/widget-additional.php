@@ -12,7 +12,7 @@ class Salatik_Additional_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array (
 			'classname' 	=> 'salatik-additional-widget',			
-			'description' 	=> esc_html__( 'Дополнительный блок', 'salatik' ),	 	
+			'description' 	=> esc_html__( 'Дополнительный блок', 'salatik' ),	
 		);
 		parent::__construct( 'salatik_additional_widget', esc_html__( 'Дополнительный блок', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
     }

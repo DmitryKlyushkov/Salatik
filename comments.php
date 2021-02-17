@@ -53,10 +53,10 @@ if ( post_password_required() ) {
 			'comment_field'			=> '<textarea name="comment" id="commentary" class="commentaries__textarea" placeholder="Введите текст комментария"></textarea>',	
             'id_form'				=> 'commentaries__form',
 			'class_form'			=> 'commentaries__form',			
-			'title_reply'			=> 'Добавить комментарий:',	
+			'title_reply'			=> esc_html__('Добавить комментарий:', 'salatik'),	
 			'title_reply_before'	=> '<h4 class="commentaries__title">',	
 			'title_reply_after	'	=> '</h4>',	
-            'title_reply_to'		=> 'Ответить',		
+            'title_reply_to'		=> esc_html__('Ответить', 'salatik'),		
             'submit_button'			=> '<button type="submit" class="commentaries__btn">отправить</button>',	
             'submit_field'			=> '<div class="commentaries__footer">
                                             <div class="commentaries__emojis">
@@ -74,7 +74,7 @@ if ( post_password_required() ) {
                                             </div>
                                             %1$s %2$s
                                         </div>',			
-            'cancel_reply_link'		=> 'Отменить',	
+            'cancel_reply_link'		=> esc_html__('Отменить', 'salatik'),	
 			'class_container'		=> '',	
 		);
 		comment_form( $args );
@@ -86,8 +86,8 @@ if ( post_password_required() ) {
 function salatik_custom_comment_callback( $comment, $args, $depth) {
     $id = $comment->comment_ID;
     $author = get_comment_author( $id );
-    $authotURL = get_comment_author_url( $id );
-    $avatar = get_avatar( $id, 'gravatar_default', '', '' );
+    $authorURL = get_comment_author_url( $id );
+    $avatar = get_avatar( $author, 'mystery', '', '' );
     $text =  get_comment_text( $id );
     $date = get_comment_date( 'd.m.Y', $id );
     $reply_href = wp_make_link_relative(
@@ -98,7 +98,7 @@ function salatik_custom_comment_callback( $comment, $args, $depth) {
     echo '<li class="comments__comment">
     <div class="comments__row">
         <div class="comments__column">
-            <a href="'.$authotURL.'">
+            <a href="'.$authorURL.'">
                 <div class="comments__avatar">'.$avatar.'</div>
             </a>
         </div>

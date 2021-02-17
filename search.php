@@ -10,7 +10,7 @@
 
 <?php get_header(); ?>
 
-<h3 class="about__title about__title--search">Результаты поиска:</h3>
+<h3 class="about__title about__title--search"><?php esc_html_e('Результаты поиска:', 'salatik'); ?></h3>
 <section class="about about--search">
     <div class="about__recipes about__recipes--search">
         <div class="about__recepies_container">

@@ -12,7 +12,7 @@
 
 <body <?php body_class(); ?>>
 
-<h2 class="archive__title"><?php echo esc_html__('Все рецепты', 'salatik'); ?></h2>
+<h2 class="archive__title"><?php esc_html_e('Все рецепты', 'salatik'); ?></h2>
 <section class="about about--search">
 	<div class="about__recipes">
 		<div class="about__recepies_container">

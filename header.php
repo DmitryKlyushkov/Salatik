@@ -47,11 +47,11 @@
                 <ul class="dropdown__container login-dropdown__container">
                     <?php
                     if(!is_user_logged_in(  )) { ?>
-                        <li><a href="/login" class="header__login">Вход</a></li>
-                        <li><a href="/registration" class="header__reg">Регистрация</a></li>
+                        <li><a href="/login" class="header__login"><?php esc_html_e('Вход', 'salatik'); ?></a></li>
+                        <li><a href="/registration" class="header__reg"><?php esc_html_e('Регистрация', 'salatik'); ?></a></li>
                     <?php } else { ?>
-                        <li><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Выход" class="header__login">Выйти</a></li>
-                        <li><a href="/profile" class="header__reg">Профиль</a></li>
+                        <li><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Выход" class="header__login"><?php esc_html_e('Выйти', 'salatik'); ?></a></li>
+                        <li><a href="/profile" class="header__reg"><?php esc_html_e('Профиль', 'salatik'); ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -81,8 +81,8 @@
                     ] );
                 } else { ?>
                     <ul class="header__login-container">
-                        <li><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Выход" class="header__login">Выйти</a></li>
-                        <li><a href="/profile" class="header__reg">Профиль</a></li>
+                        <li><a href="<?php echo wp_logout_url( home_url() ); ?>" title="<?php esc_html_e('Выйти', 'salatik'); ?>" class="header__login"><?php esc_html_e('Выйти', 'salatik'); ?></a></li>
+                        <li><a href="/profile" class="header__reg"><?php esc_html_e('Профиль', 'salatik'); ?></a></li>
                     </ul>
                 <?php  
                 }

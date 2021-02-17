@@ -64,3 +64,8 @@ function category_has_parent($catid){
     return false;
 }
 
+// WP.Media Fix
+function load_wp_media_files() {
+    wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );

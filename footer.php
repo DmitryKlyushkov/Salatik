@@ -15,13 +15,13 @@
                         <div class="footer__text"><?php echo bloginfo('description'); ?></div>
                     </div>
                     <div class="footer__column">
-                        <div class="footer__title">Подписывайтесь на обновления и получайте новые рецепты каждый день!</div>
+                        <div class="footer__title"><?php esc_html_e('Подписывайтесь на обновления и получайте новые рецепты каждый день!', 'salatik'); ?></div>
                         <form action="" id="footer-form" class="footer__form">
-                            <input type="email" class="footer__email" name="footer-email" placeholder="Введите ваш e-mail">
-                            <button type="submit" class="footer__btn">Подписаться</button>
+                            <input type="email" class="footer__email" name="footer-email" placeholder="<?php esc_html_e('Введите ваш e-mail', 'salatik'); ?>">
+                            <button type="submit" class="footer__btn"><?php esc_html_e('Подписаться', 'salatik'); ?></button>
                             <div class="checkbox">
                                 <input type="checkbox" name="footer-checkbox" class="footer__checkbox">
-                                <span>Согласие на обработку персональных данных</span>
+                                <span><?php esc_html_e('Согласие на обработку персональных данных', 'salatik'); ?></span>
                             </div>
                         </form>
                     </div>
@@ -105,7 +105,7 @@
                     <div class="copyrights__row">
                         <div class="copyrights__column">
                             <div class="copyrights__rights">
-                                2019 SALATIK - All Rights Reserved
+                                <?php echo Kirki::get_option( 'salatik_copyrights', 'text_setting'); ?>
                             </div>
                         </div>
                         <div class="copyrights__column">

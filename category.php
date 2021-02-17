@@ -50,7 +50,7 @@ $cat_name = single_cat_title( '', false );
 						get_template_part('template-parts/content/content-recipe-home', get_post_format());
 						endwhile;
 					else:
-						echo '<h2>Рецептов данного типа еще нет</h2>';
+						echo '<h2>'.esc_html__('Рецептов данного типа еще нет', 'salatik').'</h2>';
 					endif;
 					
 				?>

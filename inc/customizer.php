@@ -27,6 +27,24 @@ Kirki::add_config( 'salatik_footer', array(
     'option_name'   => 'salatik_footer',
 ) );
 
+Kirki::add_config( 'salatik_copyrights', array(
+    'capability'    => 'edit_theme_options',
+    'option_type'   => 'option',
+    'option_name'   => 'salatik_copyrights',
+) );
+
+Kirki::add_config( 'salatik_contacts', array(
+    'capability'    => 'edit_theme_options',
+    'option_type'   => 'option',
+    'option_name'   => 'salatik_contacts',
+) );
+
+Kirki::add_config( 'salatik_contacts_2', array(
+    'capability'    => 'edit_theme_options',
+    'option_type'   => 'option',
+    'option_name'   => 'salatik_contacts_2',
+) );
+
 /**===================================================SLIDER PANEL============================================================== */
  
 Kirki::add_panel( 'panel_slider', array(
@@ -203,7 +221,14 @@ Kirki::add_section( 'section_footer_socials_title', array(
 Kirki::add_section( 'section_footer_socials_socials', array(
     'title'          => esc_html__( 'Социальные сети', 'salatik' ),
     'panel'          => 'panel_footer',
-    'priority'       => 0,
+    'priority'       => 1,
+) );
+
+// Footer CopyRights
+Kirki::add_section( 'section_footer_copyrights', array(
+    'title'          => esc_html__( 'Авторские права', 'salatik' ),
+    'panel'          => 'panel_footer',
+    'priority'       => 2,
 ) );
 /**===================================================FOOTER CONTROLS============================================================== */
 // Socials Title
@@ -261,6 +286,72 @@ Kirki::add_field( 'salatik_footer', [
 			)
 		),
 ] );
+
+// CopyRights
+Kirki::add_field( 'salatik_copyrights', [
+	'type'     => 'text',
+	'settings' => 'text_setting',
+	'label'    => esc_html__( 'Авторские права', 'salatik' ),
+	'section'  => 'section_footer_copyrights',
+	'priority' => 10,
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'text_setting' => array(
+			'selector' => '.copyrights__rights',
+			'render_callback' => '__return_false'
+			)
+		),
+] );
+/**===================================================CONTACTS PANEL============================================================== */
+ 
+Kirki::add_panel( 'panel_contacts', array(
+    'priority'    => 303,
+    'title'       => esc_html__( 'Страница контактов', 'salatik' ),
+    'description' => esc_html__( '', 'salatik' ),
+) );
+/**===================================================CONTACTS SECTIONS============================================================== */
+// Contacts Template Text Section
+Kirki::add_section( 'section_contacts_text', array(
+    'title'          => esc_html__( 'Текст на странице контактов', 'salatik' ),
+    'panel'          => 'panel_contacts',
+    'priority'       => 0,
+) );
+/**===================================================CONTACTS CONTROLS============================================================== */
+
+// Contacts Title
+Kirki::add_field( 'salatik_contacts', [
+	'type'     => 'text',
+	'settings' => 'text_setting',
+	'label'    => esc_html__( 'Заголовок', 'salatik' ),
+	'section'  => 'section_contacts_text',
+	'default'  => 'Контакты',
+	'priority' => 10,
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'text_setting' => array(
+			'selector' => '.category__title',
+			'render_callback' => '__return_false'
+			)
+		),
+] );
+
+// Contacts Description
+Kirki::add_field( 'salatik_contacts_2', [
+	'type'     => 'text',
+	'settings' => 'text_setting',
+	'label'    => esc_html__( 'Описание', 'salatik' ),
+	'section'  => 'section_contacts_text',
+	'priority' => 10,
+	'transport' => 'postMessage',   
+	'partial_refresh' => array(
+		'text_setting' => array(
+			'selector' => '.category__text',
+			'render_callback' => '__return_false'
+			)
+		),
+] );
+
+/**===================================================================================================================== */
 
 // Bloginfo Visible Edit Shortcuts
 function salatik_register_blogname_partials( $wp_customize ) {

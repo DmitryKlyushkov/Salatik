@@ -12,7 +12,8 @@ class Salatik_Popular_Posts_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array (
 			'classname' 	=> 'salatik-popular-posts-widget',			// Название виджета
-			'description' 	=> esc_html__( 'Популярные рецепты', 'salatik' ),	 	// Описание виджета в админке
+			'description' 	=> esc_html__( 'Популярные рецепты', 'salatik' ),
+			
 		);
 		parent::__construct( 'salatik_popular_posts', esc_html__( 'Популярные рецепты', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
 	}

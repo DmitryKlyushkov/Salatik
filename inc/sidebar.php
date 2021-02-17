@@ -10,6 +10,7 @@
 add_action( 'widgets_init', 'salatik_register_my_widgets' );
 
 function salatik_register_my_widgets(){
+	// Sidebar 1
 	register_sidebar( array(
 		'name'          	=> 'sidebar',  
 		'id'            	=> 'sidebar',
@@ -19,5 +20,13 @@ function salatik_register_my_widgets(){
 		'after_widget'  	=> '</section>',
 		'before_title'  	=> '<h6 class="widgettitle">',        	// Во что оборачивается заголовок виджета
 		'after_title'   	=> '</h6>',
+	) );
+	
+	// Sidebar 2
+	register_sidebar( array(
+		'name'          	=> 'sidebar-low-ad',  
+		'id'            	=> 'sidebar-low-ad',
+		'description'   	=> esc_html__( 'Второй сайдбар', 'salatik' ),	// Описание сайдбара
+		'class'         	=> 'fff',
 	) );
 }

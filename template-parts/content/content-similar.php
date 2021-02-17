@@ -6,13 +6,16 @@
  * 
  * @package salatik
  */
+
+ $content = get_the_content();
+ $title = get_the_title();
 ?>
 <article class="similars__column">
     <div class="similars__card card-similars">
         <div class="card-similars__row">
             <div class="card-similars__column">
-                <div class="card-similars__title"><?php the_title(); ?></div>
-                <div class="card-similars__text"><?php the_content(); ?></div>
+                <div class="card-similars__title"><?php echo mb_strimwidth($title, 0, 20, '...'); ?></div>
+                <div class="card-similars__text"><?php echo mb_strimwidth($content, 0, 60, '...'); ?></div>
                 <div class="card-similars__panel">
                     <div class="card-similars__likes">
                         <i class="icon-likes"></i>

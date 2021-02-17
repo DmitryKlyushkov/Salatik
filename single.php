@@ -6,15 +6,19 @@
  *
  * @package salatik
  */
+global $post;
+$author_id = $post->post_author;
 $post_id = get_the_ID();
 setPostViews($post_id);
 $category = wp_get_post_categories( $post_id );
 
-$meta_values = trim( get_post_meta( $post_id, 'ingredients', true ) );
-$exploded_values = explode(",", $meta_values);
-preg_match_all("/[A-Za-zА-Яа-я]+\s([А-Яа-я]?)+/mu", $meta_values, $names, PREG_PATTERN_ORDER );
-preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORDER );
+$meta_ingredients = trim( get_post_meta( $post_id, 'ingredients', true ) );
+preg_match_all("/([А-Яа-я]+\s)+(?=\()/imu", $meta_ingredients, $ingredients_names );
+preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_ingredients, $ingredients_numbers );
 				
+$meta_calories = trim( get_post_meta( $post_id, 'calories', true ) );
+preg_match_all("/[A-Za-zА-Яа-я]+\s([A-Za-zА-Яа-я]?)+/imu", $meta_calories, $calories_names );
+preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_calories, $calories_numbers);
 ?>
 <?php get_header(); ?>
 
@@ -42,7 +46,7 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORD
 							</a>
 							<span class="main-panel__username">
 
-								<?php the_author_meta('display_name', 1); ?>
+								<?php the_author_meta('display_name', $author_id); ?>
 
 							</span>
 						</div>
@@ -96,80 +100,128 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORD
 
 				<section class="properties">
 					<div class="properties__header">
+
+						<?php 
+						$title = get_the_title();
+						if(!empty($title)):
+						?>
 						<h3 class="properties__title">
 
-							<?php the_title(); ?>
+							<?php echo $title; ?>
 
 						</h3>
+						<?php endif; ?>
+
+						<?php 
+						$time = trim( get_post_meta( $post_id, 'time', true ) );
+						if(!empty($time)): 
+						?>
 						<div class="properties__time">
 							<i class="icon-watch"></i>
-							<h6 class="properties__time--value">30 минут</h6>
+							<h6 class="properties__time--value">
+
+								<?php echo $time ?>
+
+							</h6>
 						</div>
+						<?php endif; ?>
+
 					</div>
+
+					<?php 
+					$content = get_the_content();
+					if(!empty($content)):
+					?>
 					<div class="properties__text">
 
-						<?php the_content(); ?>  	
+						<?php echo $content; ?>  	
 
 					</div>
+					<?php endif; ?>
+
 					<div class="properties__footer">
+
+					<?php 
+					if(!empty($ingredients_names[0])): 
+					?>
 						<div class="properties__ingredients ingredients">
 							<div class="ingredients__inside">
 								<div class="ingredients__header">
 									<i class="icon-ingredients"></i>
-									<span class="ingredients__header--value">Ингредиенты:</span>
+									<span class="ingredients__header--value"><?php esc_html_e('Ингредиенты', 'salatik'); ?></span>
 								</div>
 								<div class="ingredients__content">
 
-								<?php foreach ($names as $key => $value): ?>
+								<?php 
+								foreach ($ingredients_names[0] as $key => $value): ?>
+								<?php $name = str_replace('(', '', $ingredients_names[0][$key]);
+										$ingredient = $ingredients_numbers[0][$key];
+								?>
+								<div class="ingredients__row">
+									<div class="ingredients__ingredient">
+									
+									<?php if(!empty($name)){
+											echo $name;
+											} else {
+											echo '';
+											} ?>
 
-									<div class="ingredients__row">
-										<div class="ingredients__ingredient">
-										
-											<?php echo $names[0][$key];?>
-
-										</div>
-										<div class="ingredients__amount">
-										
-											<?php echo $numbers[0][$key];?>
-											
-										</div>
 									</div>
+									<div class="ingredients__amount">
 
-								<?php endforeach; ?>
+									<?php if($ingredient){
+											echo $ingredient;
+											} else {
+											echo '';
+											} ?>
+									
+									</div>
+								</div>
 
+                            	<?php endforeach; ?>
+									
 								</div>
 							</div>
 						</div>
+						<?php endif; ?>
+
+						<?php 
+						if(!empty($calories_names[0])): 
+						?>
 						<div class="properties__calories calories">
 							<div class="calories__inside">
 								<div class="calories__header">
-									<span class="calories__header--value">Калорийность</span>
+									<span class="calories__header--value"><?php esc_html_e('Калорийность', 'salatik'); ?></span>
 								</div>
 								<div class="calories__content">
+								
+									<?php 
+									foreach ($calories_names[0] as $key => $value): 
+									?>
 									<div class="calories__row">
-										<div class="calories__chem">Белки</div>
-										<div class="calories__amount">10 г</div>
+										<div class="calories__chem">
+
+											<?php echo $calories_names[0][$key] ?>
+
+										</div>
+										<div class="calories__amount">
+
+											<?php echo $calories_numbers[0][$key] ?>
+
+										</div>
 									</div>
-									<div class="calories__row">
-										<div class="calories__chem">Жиры</div>
-										<div class="calories__amount">15 г</div>
-									</div>
-									<div class="calories__row">
-										<div class="calories__chem">Глеводы</div>
-										<div class="calories__amount">30 г</div>
-									</div>
-									<div class="calories__row">
-										<div class="calories__chem">Калории</div>
-										<div class="calories__amount">300 Ккал</div>
-									</div>
+									<?php endforeach; ?>
+						
 								</div>
 							</div>
 						</div>
+						<?php endif; ?>
+
 					</div>
 
 				</section>
 				
-				<section class="stages">
+				<!-- <section class="stages">
 					<h4 class="stages__title">Этапы приготовления:</h4>
 					<div class="stages__content">
 						<div class="stages__stage stage">
@@ -191,19 +243,15 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORD
 							<div class="stage__text"><span>3.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sapien, tincidunt rutrum fringilla nec, dictum eu ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
 						</div>
 					</div>
-				</section>
+				</section> -->
 
-				<div class="fff">
-					<div class="fff__container">
-						<span>728x90</span>
-					</div>
-				</div>
+				<?php get_sidebar( 'low-ad' ); ?>
 
 				<section class="share">
 					<div class="share__container">
 						<div class="share__row">
 							<div class="share__column">
-								<h6 class="share__title share__title--u">Поделиться в социальных сетях:</h6>
+								<h6 class="share__title share__title--u"><?php esc_html_e('Поделиться в социальных сетях:', 'salatik'); ?></h6>
 								<div class="socials-footer__icons share__socials">
 								<?php 
                                 $socials = Kirki::get_option( 'salatik_footer', 'my_repeater_setting');
@@ -264,7 +312,7 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORD
 								</div>
 							</div>
 							<div class="share__column">
-								<h6 class="share__title share__title--b">Оценить рецепт:</h6>
+								<h6 class="share__title share__title--b"><?php esc_html_e('Оценить рецепт', 'salatik'); ?></h6>
 								<form class="rating" method="POST" action="">
 									<?php echo do_shortcode('[ratemypost]'); ?>	
 								</form>
@@ -274,29 +322,34 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_values, $numbers, PREG_PATTERN_ORD
 				</section>
 
 				<section class="similars">
+					<?php 
+					$args = array(
+						'post_type' 	=> 'recipe',
+						'posts_per_page'=> 4,
+						'category__in' 	=> $category,
+						'post__not_in'	=> array($post_id)
+					);
+					$query_similar = new WP_Query($args);
+					if ( $query_similar->have_posts() ) : 
+					?>				
 					<div class="similars__container">
-						<h4 class="similars__title">Похожие рецепты:</h4>
+						<h4 class="similars__title"><?php esc_html_e('Похожие рецепты:', 'salatik'); ?></h4>
 						<div class="similars__content">
 							<div class="similars__row">
 								<?php 
-									$args = array(
-										'post_type' => 'recipe',
-										'posts_per_page' => 4,
-										'category__in' => $category
-									);
-									$query_similar = new WP_Query($args);
-									if ( $query_similar->have_posts() ) :
-									   while ( $query_similar->have_posts() ) : $query_similar->the_post();
-									   	get_template_part('template-parts/content/content-similar', get_post_format());
-									   endwhile;
-									endif;
-									wp_reset_postdata();
+								while ( $query_similar->have_posts() ) : $query_similar->the_post();
+								get_template_part('template-parts/content/content-similar', get_post_format());
+								endwhile;
 								?>
 							</div>
 						</div>
 					</div>
+					<?php 
+					endif;
+					wp_reset_postdata();
+					?>
 				</section>
-				
+
 				<?php 
 					if ( comments_open() ):
 						comments_template();

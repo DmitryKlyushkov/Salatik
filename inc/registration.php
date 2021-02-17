@@ -26,6 +26,9 @@ function salatik_registration_fields() {
         <label for="user_name" class="form-reg__subtitle">Имя</label>
         <input type="text" class="form-reg__input" id="user_name" name="user_name" placeholder="<?php _e( 'Укажите Ваше реальное имя', 'wp-recall' ); ?>" required autocomplete="off">
         
+        <label for="user_name" class="form-reg__subtitle">Информация о себе</label>
+        <input type="text" class="form-reg__input" id="user_bio" name="user_bio" placeholder="<?php _e( 'Укажите информацию о себе', 'wp-recall' ); ?>" required autocomplete="off">
+
         <label for="user_password" class="form-reg__subtitle">Пароль</label>
         <input type="password" class="form-reg__input" id="user_password" name="user_password" placeholder="Не менее 8 символов" required autocomplete="on">
         <input type="password" class="form-reg__input" id="user_password_re" name="user_password_re" placeholder="Повторите пароль" required autocomplete="on">
@@ -111,6 +114,7 @@ function salatik_add_new_user() {
         $user_login 	= $_POST['user_login'];
         $user_email 	= $_POST['user_email'];
         $user_name 	    = $_POST['user_name'];
+        $user_bio       = $_POST['user_bio'];
         $user_password  = $_POST['user_password'];
         $user_password_re  = $_POST['user_password_re'];
 	
@@ -138,9 +142,9 @@ function salatik_add_new_user() {
 	            'user_nicename'  	    => $user_login,
 	            'display_name'      	=> $user_login,
 	            'nickname'          	=> $user_login,
-	            'first_name'        	=> '',
+	            'first_name'        	=> $user_name,
 	            'last_name'         	=> '',
-	            'description'       	=> '',
+	            'description'       	=> $user_bio,
 	            'rich_editing'     	    => 'true', 
 	            'user_registered'   	=> date('Y-m-d H:i:s'),
 	            'role'              	=> 'subscriber',

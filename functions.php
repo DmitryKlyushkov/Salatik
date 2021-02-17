@@ -51,6 +51,9 @@ require SALATIK_THEME_DIR . '/widgets/widget-popular.php';
 // Widget-Sidebar-Ad
 require SALATIK_THEME_DIR . '/widgets/widget-sidebar-ad.php';
 
+// Widget-Low-Ad
+require SALATIK_THEME_DIR . '/widgets/widget-low-ad.php';
+
 // Widget-Additional
 require SALATIK_THEME_DIR . '/widgets/widget-additional.php';
 
@@ -66,6 +69,9 @@ require SALATIK_THEME_DIR . '/inc/registration.php';
 // Rating System Settings
 require SALATIK_THEME_DIR . '/inc/rating-system.php';
 
+// Shortcode Add To Favorites
+require SALATIK_THEME_DIR . '/inc/add-to-favorites.php';
+
 // Profile Form Settings
 require SALATIK_THEME_DIR . '/inc/profile-form.php';
 
@@ -74,6 +80,7 @@ require SALATIK_THEME_DIR . '/inc/ajax.php';
 
 // Custom Customizer API Settings
 require SALATIK_THEME_DIR . '/inc/customizer.php';
+
 
 
 
