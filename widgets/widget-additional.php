@@ -14,7 +14,7 @@ class Salatik_Additional_Widget extends WP_Widget {
 			'classname' 	=> 'salatik-additional-widget',			
 			'description' 	=> esc_html__( 'Дополнительный блок', 'salatik' ),	
 		);
-		parent::__construct( 'salatik_additional_widget', esc_html__( 'Дополнительный блок', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
+		parent::__construct( 'salatik_additional_widget', esc_html__( 'Дополнительный блок', 'salatik' ), $widget_ops );	
     }
     
 	// Back-end display of widget

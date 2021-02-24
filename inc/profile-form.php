@@ -19,7 +19,6 @@ function salatik_profile_form() {
         <div class="recepies-profile__body">
             <div class="recepies-profile__subtitle">Добавление рецепта*:</div>
             <div class="recepies-profile__select">
-                <!-- <div class="recepies-profile__placeholder">Выберите категорию</div> -->
                 <i class="icon-arrow"></i>
                 <?php
                 $args = array(

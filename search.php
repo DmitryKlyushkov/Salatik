@@ -18,10 +18,10 @@
             <?php 
             if ( have_posts() ) :
                         while ( have_posts() ) : the_post();
-                                get_template_part( 'template-parts/content/content-recipe-home', get_post_format() );		// Выводим найденные записи
+                                get_template_part( 'template-parts/content/content-recipe-home', get_post_format() );		
                         endwhile;
                 else :
-                    echo '<p class="search-not-found">'.esc_html__('Не найдено', 'salatik').'</p>';	// Если ничего не найдено - выводим это (написать подходящий код)
+                    echo '<p class="search-not-found">'.esc_html__('Не найдено', 'salatik').'</p>';	
                 endif;
                 
                     wp_reset_postdata();

@@ -151,11 +151,11 @@ function salatik_add_new_user() {
 	        );
 	        
 	        $new_user_id = wp_insert_user($user_data);
-		    // add_user_meta( $user_id, $meta_key, $meta_value, $unique );	// кастомные метаданные
+		    // add_user_meta( $user_id, $meta_key, $meta_value, $unique );
 		
 	        if($new_user_id) {
 	            // Send an email to the admin
-	            wp_new_user_notification( $new_user_id );	// при успешном создании пользователя - оповещает админа
+	            wp_new_user_notification( $new_user_id );	
 	
 	            // Log the user in
 	            
@@ -163,7 +163,7 @@ function salatik_add_new_user() {
 	            //wp_set_current_user($new_user_id, $user_login);
 	            //do_action('wp_login', $user_login);
 	
-	            wp_redirect(home_url()); exit;		// при успешном создании пользователя - перенаправляет на главную страницу
+	            wp_redirect(home_url()); exit;	
 	        }
 	  }
     }
@@ -178,7 +178,7 @@ function salatik_errors() {
 // Display error messages
 function salatik_display_errors(){
     if($codes = salatik_errors()->get_error_codes()){
-        echo '<div class="error__container">';		// Вывод контейнера с ошибками 
+        echo '<div class="error__container">';		
         // loop error codes and display errors
         foreach ($codes as $code) {
             $message = salatik_errors()->get_error_message($code);
@@ -186,7 +186,7 @@ function salatik_display_errors(){
         }
         echo '</div>';
     } else {
-        echo '<div class="error__container">';		// Если ошибок нет, то выводится этот контейнер
+        echo '<div class="error__container">';		
         echo '<p class="success">'.__("Аккаунт создан", "salatik").'</p>';
         echo '</div>';
     }

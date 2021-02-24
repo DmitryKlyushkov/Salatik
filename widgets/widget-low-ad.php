@@ -7,14 +7,14 @@
  * @package salatik
  */
 // Popular Posts Widget
-class Salatik_Low_Ad_Widget extends WP_Widget {	// Поменять название класса на нужное
+class Salatik_Low_Ad_Widget extends WP_Widget {	
 	// setup the widget name, desc etc
 	public function __construct() {
 		$widget_ops = array (
-			'classname' 	=> 'salatik-low-ad-widget',			// Название виджета
-			'description' 	=> esc_html__( 'Рекламный виджет внизу страницы', 'salatik' ),	 	// Описание виджета в админке
+			'classname' 	=> 'salatik-low-ad-widget',			
+			'description' 	=> esc_html__( 'Рекламный виджет внизу страницы', 'salatik' ),	 	
 		);
-		parent::__construct( 'salatik_low-ad_widget', esc_html__( 'Рекламный виджет внизу страницы', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
+		parent::__construct( 'salatik_low-ad_widget', esc_html__( 'Рекламный виджет внизу страницы', 'salatik' ), $widget_ops );	
 	}
 
 	// Back-end display of widget

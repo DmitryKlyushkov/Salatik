@@ -66,25 +66,6 @@
               </div>
             </div>
             <div class="about__recipes">
-            
-            <!-- <div class="pagination">
-              <div class="pagination__prev">  
-                    
-                <a href="#" class="prev"></a> 
-                </div>
-                
-              <div class="pagination__pages"> 
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-              </div>
-              <div class="pagination__next">
-                    
-                <a href="#" class="next"></a>
-              </div>
-            </div> -->
               <div class="about__recepies_container">
                 <div class="about__row">
 
@@ -122,7 +103,6 @@
               $post_content = get_the_content( null, null, $post_id );
 
               $meta_ingredients = trim( get_post_meta( $post_id, 'ingredients', true ) );
-              //preg_match_all("/[A-Za-zА-Яа-я]+\s([A-Za-zА-Яа-я]?)+/imu", $meta_ingredients, $ingredients_names );
               preg_match_all("/([^(),]+)(?:$|\()/imu", $meta_ingredients, $ingredients_names );  
               preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_ingredients, $ingredients_numbers );
                       

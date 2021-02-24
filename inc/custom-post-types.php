@@ -29,20 +29,12 @@ function salatik_register_post_types(){
 			'menu_name'          	=> esc_html__( 'Рецепты', 'salatik' ), 						
 		],
 		'description'         		=> esc_html__( 'Рецепты салатов', 'salatik' ),		
-		'public'              		=> true,
-		// 'publicly_queryable'  	=> null, 							
-	    'exclude_from_search'		=> false, 							
-		// 'show_ui'             	=> null, 							
-		// 'show_in_nav_menus'  	=> null, 							
-		'show_in_menu'       		=> null, 							
-		// 'show_in_admin_bar'  	=> null, 						
-		'show_in_rest'        		=> null, 							
-		//'rest_base'           	=> null, 							
+		'public'              		=> true,							
+	    'exclude_from_search'		=> false, 													
+		'show_in_menu'       		=> null, 												
+		'show_in_rest'        		=> null, 												
 		'menu_position'       		=> 7,						
-		'menu_icon'          		=> 'dashicons-products', 				
-		//'capability_type'   		=> 'post',
-		//'capabilities'      		=> 'post', 						
-		//'map_meta_cap'      		=> null, 						
+		'menu_icon'          		=> 'dashicons-products', 								
 		'hierarchical'        		=> false,
 		'supports'            		=> [ 'title', 'editor', 'author', 'thumbnail', 'comments' ],  // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          		=> ['category', 'ingredients', 'calories', 'time'],
@@ -74,29 +66,20 @@ function recipe_create_taxonomy(){
 			'new_item_name'     	=> esc_html__( 'Новый ингредиент', 'salatik' ),
 			'menu_name'         	=> esc_html__( 'Ингредиенты', 'salatik' ),
 		],
-		'description'          		=> esc_html__( 'Ингредиенты рецепта', 'salatik' ), 	// описание таксономии
+		'description'          		=> esc_html__( 'Ингредиенты рецепта', 'salatik' ), 	
 		'public'               		=> true,
-		// 'publicly_queryable'    	=> null, 						// равен аргументу public
-		// 'show_in_nav_menus'     	=> true, 						// равен аргументу public
-		// 'show_ui'               		=> true, 						// равен аргументу public
-		'show_in_menu'          	=> false, 						// показать таксономию как подраздел слева в меню
-		// 'show_tagcloud'         	=> true, 						// равен аргументу show_ui
-		// 'show_in_quick_edit'    	=> null, 						// равен аргументу show_ui
-		'hierarchical'          		=> false, 						// true - таксономия будет древовидная [и с чекбоксами] (как категории);
+		'show_in_menu'          	=> false, 						
+		'hierarchical'          		=> false, 					
 		'rewrite'               		=> true,
-		//'query_var'             		=> $taxonomy, 					// название параметра запроса
 		'capabilities'          		=> array(),
-		'meta_box_cb'           		=> 'recipe_ingredients_meta_box',  // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
-		'show_admin_column'    			=> true, 						// авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
-		'show_in_rest'          		=> true, 						// добавить в REST API
-		//'rest_base'             		=> null, 						// $taxonomy
-		// '_builtin'              		=> false,
-		//'update_count_callback' 	=> 'update_post_term_count',
+		'meta_box_cb'           		=> 'recipe_ingredients_meta_box',  
+		'show_admin_column'    			=> true, 					
+		'show_in_rest'          		=> true, 						
 	] );
 
 	// CALORIES TAXONOMY
 	register_taxonomy( 'calories', [ 'recipe' ], [ 
-		'label'        	=> esc_html__( 'Калории', 'salatik' ), 			// определяется параметром $labels->name
+		'label'        	=> esc_html__( 'Калории', 'salatik' ), 		
 		'labels'              => [
 			'name'             		=> esc_html__( 'Калории', 'salatik' ),
 			'singular_name'    		=> esc_html__( 'Калории', 'salatik' ),
@@ -111,29 +94,20 @@ function recipe_create_taxonomy(){
 			'new_item_name'     	=> esc_html__( 'Новый Калории', 'salatik' ),
 			'menu_name'         	=> esc_html__( 'Калории', 'salatik' ),
 		],
-		'description'          		=> esc_html__( 'Калории рецепта', 'salatik' ), 	// описание таксономии
+		'description'          		=> esc_html__( 'Калории рецепта', 'salatik' ), 	
 		'public'               		=> true,
-		// 'publicly_queryable'    	=> null, 						// равен аргументу public
-		// 'show_in_nav_menus'     	=> true, 						// равен аргументу public
-		// 'show_ui'               		=> true, 						// равен аргументу public
-		'show_in_menu'          	=> false, 						// показать таксономию как подраздел слева в меню
-		// 'show_tagcloud'         	=> true, 						// равен аргументу show_ui
-		// 'show_in_quick_edit'    	=> null, 						// равен аргументу show_ui
-		'hierarchical'          		=> false, 						// true - таксономия будет древовидная [и с чекбоксами] (как категории);
+		'show_in_menu'          	=> false, 					
+		'hierarchical'          		=> false, 					
 		'rewrite'               		=> true,
-		//'query_var'             		=> $taxonomy, 					// название параметра запроса
 		'capabilities'          		=> array(),
-		'meta_box_cb'           		=> 'recipe_calories_meta_box',  // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
-		'show_admin_column'    			=> true, 						// авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
-		'show_in_rest'          		=> true, 						// добавить в REST API
-		//'rest_base'             		=> null, 						// $taxonomy
-		// '_builtin'              		=> false,
-		//'update_count_callback' 	=> 'update_post_term_count',
+		'meta_box_cb'           		=> 'recipe_calories_meta_box',  
+		'show_admin_column'    			=> true, 					
+		'show_in_rest'          		=> true, 					
 	] );
 
 	// TIME TAXONOMY
 	register_taxonomy( 'time', [ 'recipe' ], [ 
-		'label'        	=> esc_html__( 'Время готовки готовки', 'salatik' ), 			// определяется параметром $labels->name
+		'label'        	=> esc_html__( 'Время готовки готовки', 'salatik' ), 	
 		'labels'              => [
 			'name'             		=> esc_html__( 'Время готовки', 'salatik' ),
 			'singular_name'    		=> esc_html__( 'Время готовки', 'salatik' ),
@@ -148,33 +122,21 @@ function recipe_create_taxonomy(){
 			'new_item_name'     	=> esc_html__( 'Новый Время готовки', 'salatik' ),
 			'menu_name'         	=> esc_html__( 'Время готовки', 'salatik' ),
 		],
-		'description'          		=> esc_html__( 'Время готовки рецепта', 'salatik' ), 	// описание таксономии
+		'description'          		=> esc_html__( 'Время готовки рецепта', 'salatik' ), 
 		'public'               		=> true,
-		// 'publicly_queryable'    	=> null, 						// равен аргументу public
-		// 'show_in_nav_menus'     	=> true, 						// равен аргументу public
-		// 'show_ui'               		=> true, 						// равен аргументу public
-		'show_in_menu'          	=> false, 						// показать таксономию как подраздел слева в меню
-		// 'show_tagcloud'         	=> true, 						// равен аргументу show_ui
-		// 'show_in_quick_edit'    	=> null, 						// равен аргументу show_ui
-		'hierarchical'          		=> false, 						// true - таксономия будет древовидная [и с чекбоксами] (как категории);
+		'show_in_menu'          	=> false, 					
+		'hierarchical'          		=> false, 				
 		'rewrite'               		=> true,
-		//'query_var'             		=> $taxonomy, 					// название параметра запроса
 		'capabilities'          		=> array(),
-		'meta_box_cb'           		=> 'recipe_time_meta_box',  // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
-		'show_admin_column'    			=> true, 						// авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
-		'show_in_rest'          		=> true, 						// добавить в REST API
-		//'rest_base'             		=> null, 						// $taxonomy
-		// '_builtin'              		=> false,
-		//'update_count_callback' 	=> 'update_post_term_count',
+		'meta_box_cb'           		=> 'recipe_time_meta_box',  
+		'show_admin_column'    			=> true, 					
+		'show_in_rest'          		=> true, 					
 	] );
 }
 
 
 // Set custom post type columns
 function set_recipe_columns( $columns ){
-    /* Убрать колонку */
-    // unset ( $columns['tags'] );  // Убрать колонку ($column_name - название колонки) из админки кастомного поста (записи)
-    // return $columns;
     // Columns
     $newColumns = array();
     $newColumns[ 'title' ] 	        = esc_html__( 'Название', 'salatik' ); 

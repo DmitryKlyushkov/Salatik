@@ -11,10 +11,10 @@ class Salatik_Subscribe_Widget extends WP_Widget {
 	// setup the widget name, desc etc
 	public function __construct() {
 		$widget_ops = array (
-			'classname' 	=> 'salatik-subscribe-widget',			// Название виджета
-			'description' 	=> esc_html__( 'Подписка', 'salatik' ),	 	// Описание виджета в админке
+			'classname' 	=> 'salatik-subscribe-widget',		
+			'description' 	=> esc_html__( 'Подписка', 'salatik' ),	 	
 		);
-		parent::__construct( 'salatik_subscribe_widget', esc_html__( 'Подписка', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
+		parent::__construct( 'salatik_subscribe_widget', esc_html__( 'Подписка', 'salatik' ), $widget_ops );	
 	}
 
 	// Back-end display of widget

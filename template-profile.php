@@ -13,8 +13,6 @@ if ( !(is_user_logged_in() ) ) {
     wp_redirect( home_url('/login') );
     exit;
 }
-// global $wpdb;
-// global $post;
 $user_id = get_current_user_id();
 
 // Comment Count By User

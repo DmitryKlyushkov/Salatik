@@ -11,11 +11,11 @@ class Salatik_Popular_Posts_Widget extends WP_Widget {
 	// setup the widget name, desc etc
 	public function __construct() {
 		$widget_ops = array (
-			'classname' 	=> 'salatik-popular-posts-widget',			// Название виджета
+			'classname' 	=> 'salatik-popular-posts-widget',			
 			'description' 	=> esc_html__( 'Популярные рецепты', 'salatik' ),
 			
 		);
-		parent::__construct( 'salatik_popular_posts', esc_html__( 'Популярные рецепты', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
+		parent::__construct( 'salatik_popular_posts', esc_html__( 'Популярные рецепты', 'salatik' ), $widget_ops );	
 	}
 
 	// Back-end display of widget
@@ -50,11 +50,11 @@ class Salatik_Popular_Posts_Widget extends WP_Widget {
         $tot = absint( $instance[ 'tot' ] );
         
 		$posts_args = array(
-			'post_type'			=> 'recipe',	 			// Тип записи
-			'posts_per_page'	=> $tot,					// Кол-во записей на странице
-			'meta_key'			=> 'post_views_count',	// $metaKey в функции salatik_save_post_views( $postID )
-			'orderby'			=> 'meta_value_num',	 		// Кол-во meta_keys
-			'order'			    => 'DESC'					// От большего кол-ва к меньшему
+			'post_type'			=> 'recipe',	 			
+			'posts_per_page'	=> $tot,					
+			'meta_key'			=> 'post_views_count',	
+			'orderby'			=> 'meta_value_num',	 		
+			'order'			    => 'DESC'					
 		);
 		$posts_query = new WP_Query( $posts_args );
 
@@ -67,7 +67,7 @@ class Salatik_Popular_Posts_Widget extends WP_Widget {
         endif;
 		if ( $posts_query->have_posts() ):
             while( $posts_query->have_posts() ): $posts_query->the_post();
-				get_template_part( 'template-parts/content/content-popular', get_post_format() );	// Вывод вёрстки записи
+				get_template_part( 'template-parts/content/content-popular', get_post_format() );	
             endwhile;
         endif;
         echo '</div>';

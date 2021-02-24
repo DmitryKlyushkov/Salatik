@@ -29,17 +29,17 @@
     <div class="header__upper">
         <div class="header__upper-container">
 
-            <!-- burger-menu -->
+            
             <div class="menu-icon__container">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
             </div>
-            <!-- burger-menu -->
+           
 
             <a href="<?php echo home_url(); ?>" class="header__logo"><?php echo bloginfo('name'); ?></a>
             
-            <!-- login hidden -->    
+           
             <div class="login__hidden">
                 <div class="dropdown login-dropdown">
                     <img src="<?php bloginfo( 'template_url' ); ?>/assets/img/icons/user.png" alt="">
@@ -55,7 +55,7 @@
                     <?php } ?>
                 </ul>
             </div>
-            <!-- login hidden -->
+ 
             <?php get_search_form(); ?>
 
             <?php wp_nav_menu( [

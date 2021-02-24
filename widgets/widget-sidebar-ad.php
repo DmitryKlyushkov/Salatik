@@ -8,14 +8,14 @@
  */
 
  // Popular Posts Widget
-class Salatik_Sidebar_Ad_Widget extends WP_Widget {	// Поменять название класса на нужное
+class Salatik_Sidebar_Ad_Widget extends WP_Widget {	
 	// setup the widget name, desc etc
 	public function __construct() {
 		$widget_ops = array (
-			'classname' 	=> 'salatik-sidebar-ad-widget',			// Название виджета
-			'description' 	=> esc_html__( 'Реклама в сайдбаре', 'salatik' ),	 	// Описание виджета в админке
+			'classname' 	=> 'salatik-sidebar-ad-widget',		
+			'description' 	=> esc_html__( 'Реклама в сайдбаре', 'salatik' ),	 
 		);
-		parent::__construct( 'salatik_sidebar_ad_widget', esc_html__( 'Реклама в сайдбаре', 'salatik' ), $widget_ops );	// id(имя) виджета, название виджета в админке, аргументы
+		parent::__construct( 'salatik_sidebar_ad_widget', esc_html__( 'Реклама в сайдбаре', 'salatik' ), $widget_ops );	
 	}
 
 	// Back-end display of widget
