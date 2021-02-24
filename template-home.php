@@ -66,6 +66,25 @@
               </div>
             </div>
             <div class="about__recipes">
+            
+            <!-- <div class="pagination">
+              <div class="pagination__prev">  
+                    
+                <a href="#" class="prev"></a> 
+                </div>
+                
+              <div class="pagination__pages"> 
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+              </div>
+              <div class="pagination__next">
+                    
+                <a href="#" class="next"></a>
+              </div>
+            </div> -->
               <div class="about__recepies_container">
                 <div class="about__row">
 
@@ -73,7 +92,8 @@
                   $args = array(
                     'post_type'       => 'recipe',
                     'posts_per_page'  => 9,
-                    'post_status'     => 'publish'
+                    'post_status'     => 'publish',
+                    'paged' => get_query_var('paged') ? get_query_var('paged') : 1
                   );
 
                   $query = new WP_Query( $args );
@@ -85,8 +105,8 @@
                   endif;
                   wp_reset_postdata();
                 ?>
-
-                </div>
+                
+                </div> 
               </div>
             </div>
 
@@ -116,11 +136,15 @@
               $post_author_bio = get_the_author_meta( 'user_description', $post_author_id );
               
               $avatar = get_user_meta($post_author_id, '_user_img_url', true);
+              $title = get_the_title($post_id);
 
               if(!empty($post_ids)):
             ?>
             <div class="about__full-recipe full-recipe">
-              <h3 class="about__title"><?php esc_html_e('Случайный рецепт', 'salatik'); ?></h3>
+              <h3 class="about__title"><?php esc_html_e('Случайный рецепт:', 'salatik'); ?></h3>
+              <a href="<?php the_permalink( $post_id ); ?>" class="about__link">
+                <h3 class="about__title"><?php echo $title ?></h3>
+              </a>
               <div class="full-recipe__container">
                 <div class="full-recipe__column full-recipe__column_left">
                   <div class="full-recipe__card">
@@ -138,9 +162,7 @@
                   </div>
                 </div>
                 <div class="full-recipe__column full-recipe__column_center">
-                  <a href="<?php the_permalink( $post_id ); ?>">
                     <?php echo $post_thumbnail ?>
-                  </a>
                 </div>
                 <div class="full-recipe__column full-recipe__column_right">
                   <div class="full-recipe__card">
@@ -261,6 +283,7 @@
                   endif;
                 ?>
               </div>
+              
             </div>
           </section>
 

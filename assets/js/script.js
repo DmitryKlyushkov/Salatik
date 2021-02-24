@@ -743,3 +743,37 @@ $('.main-panel__savetext--nolog').on('click', function(e){
 Inputmask({ regex:  String.raw`([a-zA-Zа-яА-Я]+ ([a-zA-Zа-яА-Я]+ )*\([^()]+\), )+` }).mask('#profile-form__ingredients');
 Inputmask({ regex:  String.raw`Белки \(\d+(\.?\d+)?г\), Жиры \(\d+(\.?\d+)?г\), Углеводы \(\d+(\.?\d+)?г\), Калорийность \(\d+(\.?\d+)?Ккал\)` }).mask('#profile-form__calories');
 $('#profile-form__time').inputmask("9{1,} минут(ы)");
+
+ 
+// // load more button click event
+// $('.comment_loadmore').click( function(){
+//   var button = $(this);
+
+//   // decrease the current comment page value
+//   cpage--;
+
+//   $.ajax({
+//     url : ajaxurl, // AJAX handler, declared before
+//     data : {
+//       'action': 'salatik_load_more_comments', // wp_ajax_cloadmore
+//       'post_id': parent_post_id, // the current post
+//       'cpage' : cpage, // current comment page
+//     },
+//     type : 'POST',
+//     beforeSend : function ( xhr ) {
+//       button.text('Загрузка...'); // preloader here
+//     },
+//     success : function( data ){
+//       if( data ) {
+//         $('ul.comments').append( data );
+//         button.text('Загрузить еще'); 
+//           // if the last page, remove the button
+//         if ( cpage == 1 )
+//           button.remove();
+//       } else {
+//         button.remove();
+//       }
+//     }
+//   });
+//   return false;
+// });

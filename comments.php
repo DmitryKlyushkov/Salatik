@@ -18,19 +18,14 @@ if ( post_password_required() ) {
 	?>
 		<ul class="commentaries__comments comments">
 			<?php 
-				$args = array(
-					'walker' 			=> null,									
-					'max_depth' 		=> 2,  										
+				$args = array(								
 					'style' 			=> 'ul', 								
 					'callback'			=> 'salatik_custom_comment_callback',		
 					'end-callback'		=> 'salatik_custom_comment_end_callback',	
 					'type'				=> 'all', 								
-					'reply_text'		=> esc_html__( 'Ответить', 'salatik'), 		
-					'page'				=> 1,										
-					'per_page'			=> 5,									
+					'reply_text'		=> esc_html__( 'Ответить', 'salatik'), 																			
 					'avatar_size'		=> 50,									
-					'reverse_top_level'	=> null,								               
-					'reverse_children'	=> '',									
+					'reverse_top_level'	=> true,								               						
 					'format'			=> 'html5',								
 					'short_ping'		=> true,							
 					'echo'				=> true,							

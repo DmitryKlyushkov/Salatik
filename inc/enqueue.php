@@ -23,7 +23,8 @@
     wp_enqueue_script( 'slick', get_template_directory_uri(  ) . '/assets/js/libs/slick.min.js', array('jquery'), null, true );
     wp_enqueue_script( 'mask', get_template_directory_uri(  ) . '/assets/js/libs/jquery.inputmask.min.js', array('jquery'), null, true );
     wp_enqueue_script( 'script', get_template_directory_uri(  ) . '/assets/js/script.min.js', array('jquery'), null, true );
- }
+ 
+   }
 
  // Admin Panel Enqueue Scripts
  add_action( 'admin_enqueue_scripts', 'salatik_load_admin_scripts', 99 );

@@ -19,6 +19,7 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_ingredients, $ingredients_numbers 
 $meta_calories = trim( get_post_meta( $post_id, 'calories', true ) );
 preg_match_all("/[A-Za-zА-Яа-я]+\s([A-Za-zА-Яа-я]?)+/imu", $meta_calories, $calories_names );
 preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_calories, $calories_numbers);
+
 ?>
 <?php get_header(); ?>
 
@@ -76,7 +77,7 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_calories, $calories_numbers);
 
 							</span>
 						</div>
-						<div class="main-panel__rating">
+						<div class="main-panel__rating" data-da="main-panel_bottom, 1, 525" data-da-index="0">
 
 							<?php echo rmp_get_visual_rating( $post_id ); ?>
 
@@ -220,30 +221,6 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_calories, $calories_numbers);
 					</div>
 
 				</section>
-				
-				<!-- <section class="stages">
-					<h4 class="stages__title">Этапы приготовления:</h4>
-					<div class="stages__content">
-						<div class="stages__stage stage">
-							<div class="stage__img">
-								<picture><source srcset="img/recipe/01.webp" type="image/webp"><img src="img/recipe/01.png" alt=""></picture>
-							</div>
-							<div class="stage__text"><span>1.</span> Нарезать томаты черри...</div>
-						</div>
-						<div class="stages__stage stage">
-							<div class="stage__img">
-								<picture><source srcset="img/recipe/01.webp" type="image/webp"><img src="img/recipe/01.png" alt=""></picture>
-							</div>
-							<div class="stage__text"><span>2.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sapien, tincidunt rutrum fringilla nec, dictum eu ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-						</div>
-						<div class="stages__stage stage">
-							<div class="stage__img">
-								<picture><source srcset="img/recipe/01.webp" type="image/webp"><img src="img/recipe/01.png" alt=""></picture>
-							</div>
-							<div class="stage__text"><span>3.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sapien, tincidunt rutrum fringilla nec, dictum eu ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-						</div>
-					</div>
-				</section> -->
 
 				<?php get_sidebar( 'low-ad' ); ?>
 
@@ -351,11 +328,52 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_calories, $calories_numbers);
 				</section>
 
 				<?php 
-					if ( comments_open() ):
-						comments_template();
-					endif;
+				if ( comments_open() ):
+					comments_template();
 				?>
+					
+				<div class="commentaries__pagination pagination">
+				<?php if(!empty(get_previous_comments_link())) : ?>
+					<div class="pagination__prev"> 
+						<?php previous_comments_link( '<i class="icon-arrow"></i>'); ?>
+					</div>
+				<?php endif; ?>
+					<?php 
+					$args = array(
+						'post_id'	=> $post_id,
+					 );
+					 
+					 $comments_query = new WP_Comment_Query;
+					 $comments = $comments_query->query( $args );
+					 
+					$pages = (int) get_comment_pages_count( $comments );
+					if(!empty(get_the_comments_pagination())): ?>
+					<div class="pagination__pages"> 
+						 
+					<?php 
+					
+					paginate_comments_links( array (
+							'total'        			=> $pages,                       
+							'current'      			=> 0,                    
+							'show_all'     			=> true,               	
+							'end_size'     			=> 2,                    
+							'mid_size'     			=> 2,                     	
+							'prev_next'    			=> false,               
+							'prev_text'    			=> false, 	
+							'next_text'    			=> false,     
+							'type'         			=> 'plain',              
+							'add_args'     			=> false
+						)); ?> 
+					</div>
+					<?php endif; ?>
+				<?php if(!empty(get_next_comments_link())) : ?>
+					<div class="pagination__next">
+						<?php next_comments_link( '<i class="icon-arrow"></i>'); ?>
+					</div>
+				<?php endif; 
+				endif; ?>
 
+				</div>
 			</div>
 			
 			<div class="aside__container">
@@ -363,7 +381,6 @@ preg_match_all("/(?<=\()(.*?)(?=\))/m", $meta_calories, $calories_numbers);
 			</div>
 
 		</div>
-
 	</main>
         
 <?php get_footer(); ?>
