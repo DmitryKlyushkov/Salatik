@@ -290,7 +290,6 @@ $checkbox.on("click", function (event) {
         }
       }
     }
-    customAdapt();
   }
 
   //call the main function
